@@ -51,6 +51,11 @@
         transition: background-color 0.4s var(--transition-smooth);
     }
 
+    /* Impede a rolagem da tela principal quando o modal estiver aberto */
+    body.no-scroll {
+        overflow: hidden;
+    }
+
     /* Foco Acessível Profissional */
     input:focus-visible, button:focus-visible, a:focus-visible {
         outline: 2px solid var(--brand-primary);
@@ -537,9 +542,14 @@
             document.getElementById("cart-toggle-btn").addEventListener("click", () => this.toggleSidebar(true));
             document.getElementById("cart-close-btn").addEventListener("click", () => this.toggleSidebar(false));
             document.getElementById("cart-backdrop").addEventListener("click", () => this.toggleSidebar(false));
-            document.getElementById("close-modal-btn").addEventListener("click", () => document.getElementById("quick-view-modal").close());
             document.getElementById("theme-toggle").addEventListener("click", () => this.toggleTheme());
             document.getElementById("checkout-submit-btn").addEventListener("click", () => this.checkoutToWhatsApp());
+            
+            // Remove o bloqueio de scroll quando o modal nativo for fechado
+            document.getElementById("quick-view-modal").addEventListener("close", () => {
+                document.body.classList.remove("no-scroll");
+            });
+            document.getElementById("close-modal-btn").addEventListener("click", () => document.getElementById("quick-view-modal").close());
         },
 
         openQuickView(id) {
@@ -565,6 +575,8 @@
                 modal.close();
             };
 
+            // Bloqueia a rolagem da página principal antes de exibir o modal
+            document.body.classList.add("no-scroll");
             modal.showModal();
         },
 
