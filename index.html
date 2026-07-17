@@ -3,1377 +3,1314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Olhar Supremo | Haute Couture Brow Curatorship</title>
+    <title>StudioY. | Design de Sobrancelhas</title>
     
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ==========================================================================
-           1. RECURSOS AVANÇADOS DE CSS (@property) & CORES
-           ========================================================================== */
-        @property --angle {
-            syntax: '<angle>';
-            initial-value: 0deg;
-            inherits: false;
-        }
-
+        /* ================= VARIÁVEIS ================= */
         :root {
-            --bg-main: #030303;
-            --bg-surface: #070707;
-            --bg-card: #0d0d0d;
-            --bg-glass: rgba(7, 7, 7, 0.85);
-            
-            /* Paleta de Ouro Metálico Refinada */
-            --gold-primary: #d4af37;
-            --gold-light: #fef8dd;
-            --gold-mid: #e6ca65;
-            --gold-dark: #8f721c;
-            --gold-gradient: linear-gradient(135deg, #fef8dd 0%, #d4af37 50%, #8f721c 100%);
-            --gold-foil: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            
-            --text-white: #f5f5f7;
-            --text-muted: #88888e;
-            --text-dark: #030303;
-            
-            --border-subtle: 1px solid rgba(212, 175, 55, 0.14);
-            --border-gold: 1px solid rgba(212, 175, 55, 0.45);
-            
-            --glow-card: 0 20px 40px -15px rgba(212, 175, 55, 0.15);
-            --glow-btn: 0 10px 30px rgba(212, 175, 55, 0.35);
-            
-            --font-title: 'Cinzel', serif;
-            --font-italic: 'Cormorant Garamond', serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-            
-            --easing: cubic-bezier(0.16, 1, 0.3, 1);
-            --transition: all 0.6s var(--easing);
+            --primary: #c2957d;       
+            --primary-dark: #a87b64;  
+            --primary-light: #f5ece8;
+            --bg-color: #faf8f5;      
+            --text-dark: #2c2a29;     
+            --text-light: #666666;    
+            --white: #ffffff;
+            --whatsapp: #25D366;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        *, *::before, *::after {
+        /* ================= RESET ================= */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none !important; /* Desativa o cursor padrão para usar o de Luxo */
         }
 
         html {
             scroll-behavior: smooth;
-            background-color: var(--bg-main);
-            color: var(--text-white);
-            font-size: 16px;
         }
 
         body {
-            font-family: var(--font-body);
-            line-height: 1.8;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
             overflow-x: hidden;
-            background: var(--bg-main);
-            letter-spacing: -0.01em;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
         }
 
-        /* ==========================================================================
-           2. CURSOR DE LUXO PERSONALIZADO (CUSTOM GOLD CURSOR)
-           ========================================================================== */
-        .custom-cursor {
-            position: fixed;
-            top: 0; left: 0;
-            width: 10px; height: 10px;
-            background: var(--gold-light);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s var(--easing), height 0.3s var(--easing), background 0.3s, border 0.3s;
-            box-shadow: 0 0 15px var(--gold-primary);
-        }
-
-        .custom-cursor.hovered {
-            width: 50px; height: 50px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold-primary);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Iluminação Ambiente Cinematográfica */
-        body::before, body::after {
-            content: '';
-            position: fixed;
-            width: 45vw;
-            height: 45vw;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 65%);
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(50px);
-        }
-        body::before { top: -10%; left: -10%; animation: pulseLight 14s infinite alternate ease-in-out; }
-        body::after { bottom: 5%; right: -10%; animation: pulseLight 18s infinite alternate-reverse ease-in-out; }
-
-        @keyframes pulseLight {
-            0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
-            100% { transform: scale(1.25) translate(40px, 30px); opacity: 1; }
-        }
-
-        /* Hierarquia Tipográfica Editorial */
         h1, h2, h3, h4 {
-            font-family: var(--font-title);
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-white);
-        }
-
-        .serif-italic {
-            font-family: var(--font-italic);
-            font-style: italic;
-            text-transform: none;
-            font-weight: 300;
-            letter-spacing: -0.01em;
-            background: var(--gold-foil);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            padding-right: 6px;
-        }
-
-        p {
-            font-family: var(--font-body);
-            font-weight: 300;
-            color: var(--text-muted);
-            letter-spacing: 0.02em;
-            line-height: 1.85;
-        }
-
-        /* Rolagem Customizada */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 5px; border: 1px solid rgba(212,175,55,0.2); }
-        ::-webkit-scrollbar-thumb:hover { background: var(--gold-primary); }
-
-        /* Scroll Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.9s var(--easing), transform 0.9s var(--easing);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ==========================================================================
-           3. NAVEGAÇÃO DE ALTA COSTURA
-           ========================================================================== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 8%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: transparent;
-            transition: var(--transition);
-            border-bottom: 1px solid transparent;
-        }
-
-        .navbar.scrolled {
-            padding: 18px 8%;
-            background: var(--bg-glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-bottom: var(--border-subtle);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.95);
-        }
-
-        .logo {
-            font-family: var(--font-title);
-            font-size: 20px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            font-family: var(--font-italic);
-            background: var(--gold-foil);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-style: italic;
-            text-transform: capitalize;
-            font-size: 30px;
-            letter-spacing: 0;
+            font-family: 'Playfair Display', serif;
             font-weight: 600;
+            color: var(--text-dark);
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 45px;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
             list-style: none;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-white);
-            font-size: 10px;
+        /* ================= ANIMAÇÕES KEYFRAMES (CSS) ================= */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @keyframes fillUp {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+
+        /* Classes de Animação Via JavaScript (Scroll Reveal) */
+        .reveal-up { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-scale { opacity: 0; transform: scale(0.85); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        
+        .reveal-up.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        /* ================= COMPONENTES ================= */
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
             font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
             transition: var(--transition);
-            opacity: 0.7;
-            position: relative;
-            padding-bottom: 4px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: var(--gold-primary);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { opacity: 1; color: var(--gold-light); }
-
-        /* ==========================================================================
-           4. BOTÕES ELETROMAGNÉTICOS
-           ========================================================================== */
-        .btn-gold {
-            background: var(--gold-foil);
-            background-size: 200% auto;
-            color: var(--text-dark);
-            border: none;
-            padding: 18px 42px;
-            font-family: var(--font-body);
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
             display: inline-flex;
             align-items: center;
-            gap: 14px;
-            box-shadow: var(--glow-btn);
-        }
-
-        .btn-gold:hover {
-            background-position: right center;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 18px 40px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-white);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 17px 38px;
-            font-family: var(--font-body);
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-light);
-            transform: translateY(-4px);
-            background: rgba(212, 175, 55, 0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        /* ==========================================================================
-           5. HERO SECTION (CURADORIA DE OLHARES)
-           ========================================================================== */
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            align-items: center;
-            padding: 180px 8% 120px 8%;
-            gap: 70px;
-        }
-
-        .hero-tag {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5em;
-            color: var(--gold-primary);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-weight: 500;
-        }
-
-        .hero-tag::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--gold-gradient);
-        }
-
-        .hero h1 {
-            font-size: clamp(38px, 5.2vw, 70px);
-            line-height: 1.15;
-            margin-bottom: 35px;
-            font-weight: 400;
-        }
-
-        .hero h1 .serif-italic {
-            font-size: clamp(48px, 6.2vw, 84px);
-            line-height: 0.9;
-        }
-
-        .hero p {
-            font-size: clamp(15px, 1.2vw, 17px);
-            max-width: 540px;
-            margin-bottom: 50px;
-            color: #a0a0a6;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            height: 660px;
-            display: flex;
             justify-content: center;
-            align-items: center;
-        }
-
-        .hero-img {
-            width: 90%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 400px 400px 0 0;
-            filter: brightness(0.88) contrast(1.15);
-            border: var(--border-subtle);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.95);
-            transition: var(--transition);
-        }
-
-        .hero-image-wrapper:hover .hero-img {
-            transform: scale(1.02);
-            border-color: rgba(212, 175, 55, 0.45);
-            box-shadow: var(--glow-card);
-        }
-
-        .badge-experience {
-            position: absolute;
-            bottom: 40px;
-            left: -20px;
-            background: var(--bg-card);
-            border: var(--border-gold);
-            padding: 25px 40px;
-            backdrop-filter: blur(20px);
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.95);
-        }
-
-        .badge-experience h4 {
-            font-family: var(--font-italic);
-            font-size: 46px;
-            font-weight: 600;
-            background: var(--gold-foil);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-            letter-spacing: 0;
-        }
-
-        .badge-experience span {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--text-white);
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        /* ==========================================================================
-           6. MARQUEE EDITORIAL INFINITA (SILK TICKER)
-           ========================================================================== */
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            background: var(--bg-surface);
-            border-top: var(--border-subtle);
-            border-bottom: var(--border-subtle);
-            padding: 18px 0;
-            white-space: nowrap;
-            position: relative;
-            display: flex;
-        }
-
-        .marquee-content {
-            display: flex;
-            gap: 60px;
-            animation: scrollMarquee 25s linear infinite;
-        }
-
-        .marquee-item {
-            font-family: var(--font-title);
-            font-size: 11px;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            opacity: 0.85;
-        }
-
-        .marquee-item i {
-            font-size: 6px;
-            color: var(--gold-primary);
-        }
-
-        @keyframes scrollMarquee {
-            from { transform: translateX(0%); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* ==========================================================================
-           7. DIFERENCIAIS (FILOSOFIA DE TRABALHO)
-           ========================================================================== */
-        .features {
-            padding: 120px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            background: var(--bg-main);
-        }
-
-        .feature-item {
-            padding: 45px 35px;
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: var(--transition);
+            gap: 8px;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
-        .feature-item::after {
+        /* Efeito de preenchimento no hover do botão */
+        .btn::before {
             content: '';
             position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 2px;
-            background: var(--gold-gradient);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-dark);
+            z-index: -1;
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform 0.6s var(--easing);
+            transition: transform 0.4s cubic-bezier(0.5, 0, 0, 1);
         }
 
-        .feature-item:hover::after {
+        .btn:hover::before {
             transform: scaleX(1);
             transform-origin: left;
         }
 
-        .feature-item:hover {
-            transform: translateY(-10px);
-            border-color: rgba(212, 175, 55, 0.25);
-            box-shadow: var(--glow-card);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(168, 123, 100, 0.4);
+            border-color: var(--primary-dark);
         }
 
-        .feature-item i {
-            font-size: 28px;
-            background: var(--gold-foil);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline::before {
+            background-color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
             display: inline-block;
         }
 
-        .feature-item h3 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            letter-spacing: 0.1em;
-        }
-
-        .feature-item p {
-            font-size: 13.5px;
-            line-height: 1.8;
-        }
-
-        /* ==========================================================================
-           8. MENU DE TRATAMENTS COM BORDA ANIMADA (@property)
-           ========================================================================== */
-        .services { padding: 140px 8% 160px 8%; background: var(--bg-surface); border-top: var(--border-subtle); }
-
-        .section-title {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 90px auto;
-        }
-
-        .section-title span {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5em;
-            color: var(--gold-primary);
-            display: block;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .section-title h2 {
-            font-size: clamp(32px, 4vw, 48px);
-            line-height: 1.25;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
-
-        /* Card com animação rotacional na borda e 3D Tilt */
-        .service-card {
-            background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
-                        linear-gradient(var(--angle), transparent 50%, var(--gold-primary), var(--gold-light)) border-box;
-            border: 1px solid transparent;
-            padding: 55px 45px;
-            position: relative;
-            transition: transform 0.4s var(--easing), box-shadow 0.4s var(--easing);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 1;
-            animation: rotateBorder 8s linear infinite;
-        }
-
-        @keyframes rotateBorder {
-            to { --angle: 360deg; }
-        }
-
-        .service-card:hover {
-            transform: translateY(-12px) scale(1.01);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 35px rgba(212, 175, 55, 0.2);
-            background: linear-gradient(#121212, #121212) padding-box,
-                        linear-gradient(var(--angle), var(--gold-dark), var(--gold-light)) border-box;
-        }
-
-        .service-card .tag {
+        .section-header h2::after {
+            content: '';
             position: absolute;
-            top: 30px; right: 30px;
-            font-size: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--gold-light);
-            border: 1px solid var(--gold-dark);
-            padding: 6px 14px;
-            background: rgba(212, 175, 55, 0.08);
-            font-weight: 600;
-        }
-
-        .service-card h3 {
-            font-size: 22px;
-            margin-bottom: 20px;
-            letter-spacing: 0.08em;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            margin-bottom: 45px;
-        }
-
-        .service-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding-top: 30px;
-        }
-
-        .service-price {
-            font-family: var(--font-italic);
-            font-size: 40px;
-            font-weight: 600;
-            background: var(--gold-foil);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 0.9;
-        }
-
-        .service-time {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* ==========================================================================
-           9. SLIDER ANTES E DEPOIS INTERATIVO
-           ========================================================================== */
-        .gallery {
-            padding: 140px 8% 160px 8%;
-            background: var(--bg-main);
-            border-top: var(--border-subtle);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 45px;
-        }
-
-        .comparison-slider {
-            position: relative;
-            width: 100%;
-            height: 520px;
-            overflow: hidden;
-            border: var(--border-subtle);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
-        }
-
-        .comparison-slider img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            top: 0; left: 0;
-            pointer-events: none;
-        }
-
-        .img-after { z-index: 1; filter: contrast(1.05); }
-        .img-before {
-            z-index: 2;
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-            filter: grayscale(20%) contrast(1.05);
-        }
-
-        .slider-range {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: transparent;
-            outline: none;
-            margin: 0;
-            z-index: 3;
-            cursor: ew-resize !important;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .slider-range::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 45px;
-            height: 520px;
-            background: transparent;
-            cursor: ew-resize !important;
-        }
-
-        .slider-line {
-            position: absolute;
-            top: 0; left: 50%;
-            width: 2px; height: 100%;
-            background: var(--gold-primary);
-            z-index: 2;
-            pointer-events: none;
+            bottom: -5px;
+            left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 15px var(--gold-primary);
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 5px;
+            transition: width 0.3s ease;
         }
 
-        .slider-button {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 48px; height: 48px;
-            border-radius: 50%;
-            background: var(--gold-foil);
-            color: var(--text-dark);
+        .section-header:hover h2::after {
+            width: 100px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* ================= NAVEGAÇÃO ================= */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            font-size: 14px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.9);
-            z-index: 2;
-            pointer-events: none;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .gallery-label {
-            position: absolute;
-            top: 30px; left: 30px;
-            z-index: 4;
-            background: rgba(8,8,8,0.9);
-            border: var(--border-subtle);
-            padding: 10px 22px;
-            font-size: 9px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            backdrop-filter: blur(8px);
-            pointer-events: none;
-            color: var(--gold-light);
-            font-weight: 500;
-        }
-
-        /* ==========================================================================
-           10. DEPOIMENTOS
-           ========================================================================== */
-        .testimonials { padding: 160px 8%; background: var(--bg-surface); border-top: var(--border-subtle); }
-
-        .testi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
-
-        .testi-card {
-            background: var(--bg-card);
-            border: var(--border-subtle);
-            padding: 50px 40px;
-            position: relative;
+        .logo {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -1px;
             transition: var(--transition);
         }
 
-        .testi-card:hover { 
-            border-color: rgba(212, 175, 55, 0.45);
-            transform: translateY(-8px);
-            box-shadow: var(--glow-card);
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 2px;
+            background-color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 45%;
+            height: 100%;
+            background-color: var(--primary-light);
+            z-index: -1;
+            border-bottom-left-radius: 50%;
+            transform-origin: top right;
+            animation: fillUp 1.2s cubic-bezier(0.5, 0, 0, 1) forwards;
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            width: 100%;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            background-color: var(--white);
+            color: var(--primary-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 0%;
+            height: 12px;
+            background-color: rgba(194, 149, 125, 0.2);
+            z-index: -1;
+            transition: width 1s ease 0.5s;
+        }
+
+        .hero h1.active span::after {
+            width: 100%;
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px 20px 150px 20px;
+            box-shadow: var(--shadow);
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 30px;
+            left: -30px;
+            background: var(--white);
+            padding: 1.2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: float 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .floating-card i {
+            font-size: 2rem;
+            color: #FFD700;
+        }
+
+        .floating-card-text p {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .floating-card-text span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ================= SOBRE ================= */
+        .about {
+            background-color: var(--white);
+            overflow: hidden;
+        }
+
+        .about-inner {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: translateY(-10px);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            z-index: 0;
+            transition: var(--transition);
+        }
+
+        .about-image:hover::before {
+            transform: translate(10px, 10px);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item {
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-item span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ================= SERVIÇOS ================= */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(194, 149, 125, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem auto;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--primary);
+            color: var(--white);
+            transform: rotateY(360deg) scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 70px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #ddd;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        /* ================= DEPOIMENTOS ================= */
+        .testimonials {
+            background-color: var(--primary-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .stars {
-            color: var(--gold-primary);
-            font-size: 11px;
-            margin-bottom: 25px;
-            display: flex;
-            gap: 6px;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .testi-text {
-            font-family: var(--font-italic);
-            font-size: 24px;
+        .testimonial-text {
             font-style: italic;
-            color: var(--text-white);
-            margin-bottom: 30px;
-            line-height: 1.5;
-            font-weight: 300;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
-        .testi-author {
-            font-size: 10px;
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 600;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            display: block;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
         }
 
-        /* ==========================================================================
-           11. FAQ EM CSS GRID & LOCALIZAÇÃO VIP
-           ========================================================================== */
-        .faq-section {
-            padding: 140px 8% 160px 8%;
-            background: var(--bg-main);
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 80px;
-            align-items: start;
-            border-top: var(--border-subtle);
+        .client-name h4 {
+            margin: 0;
+            font-size: 1rem;
         }
 
-        .faq-accordion .faq-item {
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 28px 0;
+        .client-name span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ================= FAQ ================= */
+        .faq {
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
         }
 
         .faq-question {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 18px;
-            font-family: var(--font-title);
-            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
             transition: var(--transition);
         }
 
-        .faq-question:hover { color: var(--gold-light); }
-        .faq-question i { color: var(--gold-primary); transition: var(--transition); font-size: 14px; }
+        .faq-question:hover h3 {
+            color: var(--primary);
+            transform: translateX(10px);
+        }
 
-        .faq-answer-wrapper {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.5s var(--easing);
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .faq-answer {
+            max-height: 0;
             overflow: hidden;
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.8;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
         }
 
-        .faq-item.active .faq-answer-wrapper { grid-template-rows: 1fr; }
-        .faq-item.active .faq-answer { padding-top: 18px; }
-        .faq-item.active .faq-question i { transform: rotate(45deg); color: var(--gold-light); }
+        .faq-answer p {
+            padding-top: 1rem;
+            color: var(--text-light);
+        }
 
-        .location-box {
-            background: var(--bg-card);
-            border: var(--border-gold);
-            padding: 55px;
-            box-shadow: var(--glow-card);
+        .faq-item.active .faq-icon {
+            transform: rotate(135deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: #1a1a1a;
+            color: var(--white);
+            padding: 5rem 0 2rem 0;
             position: relative;
+            overflow: hidden;
         }
 
-        .location-box h3 { font-size: 28px; margin-bottom: 25px; }
-        .location-box p {
-            color: var(--text-muted);
-            font-size: 13.5px;
-            margin-bottom: 20px;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
-            gap: 18px;
-        }
-
-        .location-box i { color: var(--gold-primary); width: 20px; text-align: center; font-size: 16px; }
-
-        /* ==========================================================================
-           12. MODAL & BOTÃO WHATSAPP COM PULSO LUMINOSO
-           ========================================================================== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.88);
-            backdrop-filter: blur(25px);
-            z-index: 2000;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            transition: var(--transition);
         }
 
-        .modal-content {
-            background: var(--bg-card);
-            border: var(--border-gold);
-            padding: 55px;
-            max-width: 520px;
-            width: 100%;
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-hours h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
             position: relative;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.95), var(--glow-card);
-            animation: modalIn 0.6s var(--easing);
+            display: inline-block;
         }
 
-        @keyframes modalIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .close-modal {
+        .footer-links h3::after, .footer-contact h3::after, .footer-hours h3::after {
+            content: '';
             position: absolute;
-            top: 25px; right: 25px;
-            font-size: 24px;
-            color: var(--text-muted);
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .footer-grid > div:hover h3::after {
+            width: 50px;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a {
+            color: #aaa;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary);
+            transform: translateX(8px);
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 15px;
+            color: #aaa;
+            margin-bottom: 1rem;
             transition: var(--transition);
         }
 
-        .close-modal:hover { color: var(--gold-primary); }
-
-        .modal h3 { font-size: 26px; margin-bottom: 12px; }
-        .modal p { font-size: 13px; margin-bottom: 35px; }
-
-        .form-group { margin-bottom: 22px; }
-        .form-group label {
-            display: block;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--gold-light);
-            margin-bottom: 10px;
-            font-weight: 600;
+        .footer-contact li:hover {
+            color: var(--white);
         }
 
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 16px 20px;
-            background: var(--bg-main);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-white);
-            font-family: var(--font-body);
-            font-size: 13.5px;
-            outline: none;
+        .footer-contact i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        .footer-hours li {
+            display: flex;
+            justify-content: space-between;
+            color: #aaa;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
             transition: var(--transition);
-            border-radius: 0;
         }
 
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        .footer-hours li:hover {
+            color: var(--white);
+            border-bottom-color: var(--primary);
         }
 
-        /* Botão WhatsApp Flutuante */
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* ================= WHATSAPP FLUTUANTE ================= */
         .whatsapp-float {
             position: fixed;
-            bottom: 35px; right: 35px;
-            background: #25d366;
-            color: #fff;
-            width: 62px; height: 62px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
-            z-index: 1500;
-            text-decoration: none;
-            transition: var(--transition);
-            animation: pulseGlow 2.5s infinite;
-        }
-
-        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); background: #20bd5a; }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* ==========================================================================
-           13. FOOTER
-           ========================================================================== */
-        footer {
-            padding: 80px 8% 50px 8%;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp);
+            color: #FFF;
+            border-radius: 50px;
             text-align: center;
-            background: var(--bg-surface);
+            font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse-whatsapp 2s infinite;
         }
 
-        .footer-logo { font-size: 18px; letter-spacing: 0.3em; margin-bottom: 20px; display: inline-flex; }
-        .footer-copy { font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+        .whatsapp-float:hover {
+            background-color: #20ba56;
+            transform: scale(1.15) translateY(-5px);
+            animation: none;
+        }
 
-        /* ==========================================================================
-           14. RESPONSIVIDADE
-           ========================================================================== */
-        .menu-toggle { display: none; font-size: 24px; color: var(--gold-primary); }
-
-        @media (max-width: 992px) {
-            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 150px; gap: 50px; }
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 991px) {
+            .hero::before { width: 100%; border-radius: 0; bottom: 0; height: 50%; top: auto; transform-origin: bottom; }
+            .hero-inner { flex-direction: column; text-align: center; gap: 4rem; padding-bottom: 4rem; }
+            .hero-content { margin: 0 auto; }
+            .badges { justify-content: center; }
             .hero-actions { justify-content: center; }
-            .hero-tag { justify-content: center; }
-            .hero-image-wrapper { height: 500px; margin-top: 30px; }
-            .badge-experience { left: 50%; transform: translateX(-50%); width: 85%; justify-content: center; bottom: 20px; }
-            .faq-section { grid-template-columns: 1fr; gap: 60px; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .custom-cursor { display: none !important; }
-            *, *::before, *::after { cursor: auto !important; }
+            .hero h1 span::after { left: 50%; transform: translateX(-50%); }
+            .floating-card { left: 50%; transform: translateX(-50%) !important; bottom: -20px; animation: none; width: max-content; }
+            
+            .about-inner { flex-direction: column; text-align: center; }
+            .stats { justify-content: center; }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
             .nav-links {
                 position: fixed;
-                top: 0; right: -100%;
-                width: 85%; height: 100vh;
-                background: var(--bg-card);
+                right: -100%;
+                top: 70px;
                 flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                height: calc(100vh - 70px);
                 justify-content: center;
-                transition: var(--transition);
-                border-left: var(--border-gold);
-                box-shadow: -25px 0 60px rgba(0,0,0,0.95);
+                transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+                box-shadow: -10px 0 20px rgba(0,0,0,0.05);
             }
-            .nav-links.active { right: 0; }
-            .modal-content { padding: 40px 25px; }
-            .comparison-slider { height: 420px; }
-            .hero h1 { font-size: 34px; }
-            .hero h1 .serif-italic { font-size: 40px; }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 { font-size: 2.8rem; }
+            .section-header h2 { font-size: 2.2rem; }
+            
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="custom-cursor" id="cursor"></div>
-
-    <header class="navbar" id="navbar">
-        <a href="#" class="logo">STUDIO <span>Olhar</span></a>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#hero">O Studio</a></li>
-            <li><a href="#diferenciais">Filosofia</a></li>
-            <li><a href="#servicos">Curadoria</a></li>
-            <li><a href="#galeria">Simetria</a></li>
-            <li><a href="#depoimentos">Relatos</a></li>
-            <li><button class="btn-gold open-modal">Reservar Horário</button></li>
-        </ul>
-        <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
-    </header>
-
-    <section class="hero" id="hero">
-        <div class="hero-content reveal">
-            <div class="hero-tag">Curadoria Facial de Alto Padrão</div>
-            <h1>A Simetria <span class="serif-italic">Inigualável</span> do Seu Olhar.</h1>
-            <p>Abolimos os moldes padronizados. Desenvolvemos um projeto arquitetônico milimétrico e exclusivo, harmonizando a geometria óssea à sua identidade pessoal.</p>
-            <div class="hero-actions">
-                <button class="btn-gold open-modal"><i class="fa-regular fa-calendar-check"></i> Agendar Experiência</button>
-                <a href="#servicos" class="btn-outline">Conhecer Protocolos</a>
-            </div>
-        </div>
-        <div class="hero-image-wrapper reveal">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Modelo de Alta Costura" class="hero-img">
-            <div class="badge-experience">
-                <h4>+5k</h4>
-                <span>Olhares<br>Reestruturados</span>
-            </div>
-        </div>
-    </section>
-
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <div class="marquee-item">Simetria Inegociável <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Curadoria de Alta Costura <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Visagismo Matemático <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Biotecnologia Orgânica <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Experiência Sensorial VIP <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Simetria Inegociável <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Curadoria de Alta Costura <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Visagismo Matemático <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Biotecnologia Orgânica <i class="fa-solid fa-gem"></i></div>
-            <div class="marquee-item">Experiência Sensorial VIP <i class="fa-solid fa-gem"></i></div>
-        </div>
-    </div>
-
-    <section class="features" id="diferenciais">
-        <div class="feature-item reveal">
-            <i class="fa-solid fa-compass-drafting"></i>
-            <h3>Visagismo Matemático</h3>
-            <p>Utilizamos o conceito da Proporção Áurea para traçar ângulos de simetria perfeita, respeitando a anatomia natural e o tempo de cada fio.</p>
-        </div>
-        <div class="feature-item reveal">
-            <i class="fa-solid fa-flask-vial"></i>
-            <h3>Biotecnologia Orgânica</h3>
-            <p>Trabalhamos estritamente com pigmentos veganos importados, livres de chumbo, e séruns nanotecnológicos de estímulo ao crescimento folicular.</p>
-        </div>
-        <div class="feature-item reveal">
-            <i class="fa-solid fa-spa"></i>
-            <h3>Protocolo Sensorial VIP</h3>
-            <p>Sua sessão é um ritual particular de silêncio e repouso, acompanhado por aromaterapia clínica, esferas de gelo calmantes e massagem craniana.</p>
-        </div>
-    </section>
-
-    <section class="services" id="servicos">
-        <div class="section-title reveal">
-            <span>Menu Exclusivo</span>
-            <h2>Curadoria & Protocolos</h2>
-        </div>
-        
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <span class="tag">Assinatura</span>
-                <div>
-                    <h3>Design Visagista</h3>
-                    <p>Mapeamento arquitetônico integral, higienização enzimática, remoção milimétrica na pinça de alta precisão e finalização calmante com esferas frias.</p>
-                </div>
-                <div class="service-footer">
-                    <span class="service-price">R$ 70</span>
-                    <span class="service-time"><i class="fa-regular fa-clock"></i> 45 min</span>
-                </div>
-            </div>
-
-            <div class="service-card reveal">
-                <span class="tag">Mais Desejado</span>
-                <div>
-                    <h3>Brow Lamination Luxury</h3>
-                    <p>Reestruturação e alinhamento dos fios rebeldes. Cria o almejado efeito editorial de sobrancelha mais selvagem, preenchida e esbelta.</p>
-                </div>
-                <div class="service-footer">
-                    <span class="service-price">R$ 160</span>
-                    <span class="service-time"><i class="fa-regular fa-clock"></i> 1h 15m</span>
-                </div>
-            </div>
-
-            <div class="service-card reveal">
-                <div>
-                    <h3>Spa Folicular + Henna</h3>
-                    <p>Design visagista integrado ao poder terapêutico da henna orgânica infundida com óleos essenciais e esfoliação com argiloterapia mentolada.</p>
-                </div>
-                <div class="service-footer">
-                    <span class="service-price">R$ 95</span>
-                    <span class="service-time"><i class="fa-regular fa-clock"></i> 1h</span>
-                </div>
-            </div>
-
-            <div class="service-card reveal">
-                <span class="tag">Alta Duração</span>
-                <div>
-                    <h3>Nano Flow Lines</h3>
-                    <p>Micropigmentação hiper-realista de última geração. Desenha tramas de fios ultrafinos e artísticos, integralmente indistinguíveis dos reais.</p>
-                </div>
-                <div class="service-footer">
-                    <span class="service-price">R$ 650</span>
-                    <span class="service-time"><i class="fa-regular fa-clock"></i> 2h 30m</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery" id="galeria">
-        <div class="section-title reveal">
-            <span>Resultados Comprovados</span>
-            <h2>Arte em Transformação</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="comparison-slider reveal">
-                <div class="gallery-label">Nano Flow Lines • Deslize para comparar</div>
-                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80" alt="Depois" class="img-after">
-                <img src="https://images.unsplash.com/photo-1595959183077-515478229d8f?auto=format&fit=crop&w=800&q=80" alt="Antes" class="img-before">
-                <div class="slider-line"></div>
-                <div class="slider-button"><i class="fa-solid fa-left-right"></i></div>
-                <input type="range" min="0" max="100" value="50" class="slider-range">
-            </div>
-
-            <div class="comparison-slider reveal">
-                <div class="gallery-label">Brow Lamination • Deslize para comparar</div>
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Depois" class="img-after">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Antes" class="img-before">
-                <div class="slider-line"></div>
-                <div class="slider-button"><i class="fa-solid fa-left-right"></i></div>
-                <input type="range" min="0" max="100" value="50" class="slider-range">
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials" id="depoimentos">
-        <div class="section-title reveal">
-            <span>Reconhecimento</span>
-            <h2>Palavras de Nossas Clientes</h2>
-        </div>
-        <div class="testi-grid">
-            <div class="testi-card reveal">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="testi-text">"O nível de detalhamento e precisão é algo que nunca vivenciei. Minhas sobrancelhas ganharam uma simetria que rejuvenesceu todo o meu semblante."</p>
-                <span class="testi-author">Beatriz Albuquerque — Arquiteta</span>
-            </div>
-            <div class="testi-card reveal">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="testi-text">"O Brow Lamination mudou minha relação com meu espelho! O estúdio possui a atmosfera dos spas mais sofisticados da Europa. Simplesmente intocável."</p>
-                <span class="testi-author">Drª. Carolina Ferraz — Dermatologista</span>
-            </div>
-            <div class="testi-card reveal">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="testi-text">"Realizei a técnica Nano Flow com receio da artificialidade, mas a naturalidade dos fios é tão surreal que nem minhas irmãs notaram o procedimento."</p>
-                <span class="testi-author">Marcela Von — Empresária de Moda</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section" id="contato">
-        <div class="faq-accordion reveal">
-            <h3 style="font-size: 28px; margin-bottom: 30px;">Esclarecimentos</h3>
-            
-            <div class="faq-item">
-                <div class="faq-question">Qual a durabilidade dos procedimentos? <i class="fa-solid fa-plus"></i></div>
-                <div class="faq-answer-wrapper">
-                    <div class="faq-answer">O Design Visagista mantém sua excelência de 15 a 20 dias, dependendo do ciclo de crescimento folicular. O Brow Lamination permanece impecável por cerca de 6 semanas, enquanto a Nano Flow Lines preserva sua vivacidade entre 8 a 12 meses.</div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">O Brow Lamination pode fragilizar os fios? <i class="fa-solid fa-plus"></i></div>
-                <div class="faq-answer-wrapper">
-                    <div class="faq-answer">De forma alguma. Nosso protocolo Luxury incorpora um exclusivo banho de blindagem capilar à base de queratina hidrolisada, pantenol e aminoácidos, reestruturando a fibra capilar concomitantemente ao alinhamento estético.</div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Qual a política para reservas e pagamentos? <i class="fa-solid fa-plus"></i></div>
-                <div class="faq-answer-wrapper">
-                    <div class="faq-answer">Trabalhamos exclusivamente com horários agendados pela nossa concierge. Para procedimentos de micropigmentação, solicitamos um sinal de garantia de agenda de 30%, deduzido no ato da finalização. Aceitamos PIX e cartões de crédito em até 3x sem juros.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="location-box reveal">
-            <h3>Curadoria Presencial</h3>
-            <p><i class="fa-solid fa-location-dot"></i> Av. das Américas, 3500 — Sala 408, Jardins</p>
-            <p><i class="fa-solid fa-clock"></i> Terça a Sexta: 09h às 19h | Sábados: 09h às 16h</p>
-            <p><i class="fa-brands fa-whatsapp"></i> Atendimento estritamente via Concierge</p>
-            <br>
-            <button class="btn-gold open-modal" style="width: 100%; justify-content: center;">Solicitar Horário</button>
-        </div>
-    </section>
-
-    <footer>
-        <a href="#" class="logo footer-logo">STUDIO <span>Olhar</span></a>
-        <p class="footer-copy">&copy; 2026 Studio Olhar Supremo • Curadoria de Alta Costura</p>
-    </footer>
-
-    <a href="#" class="whatsapp-float" id="btn-whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5511930862733?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="whatsapp-float reveal-scale" style="transition-delay: 1s;">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-modal">&times;</span>
-            <h3>Reservar Horário</h3>
-            <p>Selecione seu protocolo desejado para iniciarmos seu atendimento exclusivo com nossa concierge.</p>
-            <form id="form-booking">
-                <div class="form-group">
-                    <label>Nome Completo</label>
-                    <input type="text" id="input-name" placeholder="Ex: Helena Sampaio" required>
+    <!-- CABEÇALHO -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="#" class="logo">StudioY.</a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#servicos" class="btn">Agendar <i class="fas fa-calendar-alt"></i></a></li>
+            </ul>
+
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO HERO -->
+    <section id="home" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content reveal-left">
+                <div class="badges">
+                    <div class="badge"><i class="fas fa-star" style="color: #FFD700;"></i> 5.0 Avaliações</div>
+                    <div class="badge"><i class="fas fa-award" style="color: var(--primary);"></i> Especialista</div>
                 </div>
-                <div class="form-group">
-                    <label>Protocolo de Interesse</label>
-                    <select id="input-service">
-                        <option value="Design Visagista">Design Visagista — R$ 70</option>
-                        <option value="Brow Lamination Luxury">Brow Lamination Luxury — R$ 160</option>
-                        <option value="Spa Folicular + Henna">Spa Folicular + Henna — R$ 95</option>
-                        <option value="Nano Flow Lines">Nano Flow Lines (Micro) — R$ 650</option>
-                    </select>
+                <!-- O id h1-hero é usado no JS para disparar a animação do risco embaixo do texto -->
+                <h1 id="h1-hero">Realce o poder do seu <span>olhar</span></h1>
+                <p>Especialista em visagismo facial e design de sobrancelhas. Descubra a melhor versão do seu rosto com técnicas modernas e exclusivas.</p>
+                <div class="hero-actions">
+                    <a href="#servicos" class="btn">Ver Serviços</a>
+                    <a href="#sobre" class="btn btn-outline">Conhecer o Studio</a>
                 </div>
-                <div class="form-group">
-                    <label>Período de Preferência</label>
-                    <select id="input-period">
-                        <option value="Manhã (09h às 12h)">Manhã (09h às 12h)</option>
-                        <option value="Tarde (13h às 17h)">Tarde (13h às 17h)</option>
-                        <option value="Fim de Tarde (17h às 19h)">Fim de Tarde (17h às 19h)</option>
-                        <option value="Sábado (Qualquer horário)">Sábado (Qualquer horário)</option>
-                    </select>
+            </div>
+            <div class="hero-image reveal-right" style="transition-delay: 0.3s;">
+                <img src="https://images.unsplash.com/photo-1512496015851-a908381af653?auto=format&fit=crop&w=800&q=80" alt="Design de Sobrancelha">
+                <div class="floating-card">
+                    <i class="fas fa-smile-beam"></i>
+                    <div class="floating-card-text">
+                        <p>+1000</p>
+                        <span>Clientes Felizes</span>
+                    </div>
                 </div>
-                <button type="submit" class="btn-gold" style="width: 100%; justify-content: center; margin-top: 10px;">
-                    Solicitar no WhatsApp <i class="fa-brands fa-whatsapp"></i>
-                </button>
-            </form>
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- SEÇÃO SOBRE -->
+    <section id="sobre" class="about">
+        <div class="container about-inner">
+            <div class="about-image reveal-left">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Profissional trabalhando">
+            </div>
+            <div class="about-content reveal-right" style="transition-delay: 0.2s;">
+                <h2>A arte de desenhar olhares apaixonantes</h2>
+                <p>Olá! Sou a Yasmin, especialista em micropigmentação e design de sobrancelhas há mais de 2 anos. Meu objetivo não é transformar seu rosto, mas sim realçar a beleza natural que já existe em você.</p>
+                <p>Utilizo técnicas de visagismo para garantir que cada design seja único e perfeitamente harmonizado com os traços do seu rosto.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <h4>2+</h4>
+                        <span>Anos de Exp.</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>3+</h4>
+                        <span>Certificações</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE SERVIÇOS -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <h2>Nossos Serviços</h2>
+                <p>Escolha o tratamento ideal para realçar a sua beleza</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Design Estratégico</h3>
+                    <p>Mapeamento facial completo respeitando a simetria do seu rosto, pinça e linha para um acabamento perfeito.</p>
+                    <div class="price-row">
+                        <span class="price">R$ 45,00</span>
+                        <a href="https://wa.me/5511930862733" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Agendar</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card reveal-up" style="transition-delay: 0.3s;">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Design + Henna</h3>
+                    <p>O design perfeito alinhado com a aplicação de henna orgânica para preencher falhas e dar efeito de volume.</p>
+                    <div class="price-row">
+                        <span class="price">R$ 65,00</span>
+                        <a href="https://wa.me/5511930862733" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Agendar</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card reveal-up" style="transition-delay: 0.5s;">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Brow Lamination</h3>
+                    <p>Alinhamento dos fios que entrega um efeito de sobrancelhas mais grossas, preenchidas e com aspecto selvagem e natural.</p>
+                    <div class="price-row">
+                        <span class="price">R$ 120,00</span>
+                        <a href="https://wa.me/5511930862733" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">Agendar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE DEPOIMENTOS -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <h2>O que dizem nossas clientes</h2>
+                <p>A satisfação de quem confia no nosso trabalho</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Depoimento 1 -->
+                <div class="testimonial-card reveal-scale" style="transition-delay: 0.1s;">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Melhor profissional que já fui! Ela respeitou o formato natural da minha sobrancelha e a henna durou muito tempo. Recomendo de olhos fechados!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">M</div>
+                        <div class="client-name">
+                            <h4>Mariana Silva</h4>
+                            <span>Design + Henna</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="testimonial-card reveal-scale" style="transition-delay: 0.3s;">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Fiz Brow Lamination pela primeira vez e o resultado foi incrível. O ambiente é super aconchegante e o atendimento é nota 1000."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">C</div>
+                        <div class="client-name">
+                            <h4>Camila Costa</h4>
+                            <span>Brow Lamination</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="testimonial-card reveal-scale" style="transition-delay: 0.5s;">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Finalmente encontrei alguém que consertou minha sobrancelha. O design estratégico mudou completamente a expressão do meu rosto."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">J</div>
+                        <div class="client-name">
+                            <h4>Juliana Mendes</h4>
+                            <span>Design Estratégico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas antes de agendar seu horário</p>
+            </div>
+
+            <div class="faq-container reveal-up" style="transition-delay: 0.2s;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quanto tempo dura o efeito da Henna?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A duração da henna varia de acordo com o tipo de pele. Em peles oleosas, dura em média de 3 a 5 dias. Em peles secas a normais, pode durar de 7 a 10 dias. Os cuidados em casa também influenciam muito!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Dói fazer o design de sobrancelhas?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O desconforto é mínimo! Utilizamos técnicas modernas com pinça e linha, e a pele é preparada antes do procedimento para minimizar qualquer incômodo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>O que é o Brow Lamination?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>É uma técnica russa que consiste em alisar e alinhar os fios da sobrancelha na direção desejada (geralmente para cima), dando a ilusão de fios mais encorpados e volumosos. O efeito dura de 4 a 6 semanas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid reveal-up">
+                <div class="footer-brand">
+                    <h2 style="font-family: 'Playfair Display', serif;">StudioY.</h2>
+                    <p>Realçando a sua beleza natural com técnicas exclusivas e atendimento personalizado.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#sobre">Sobre Mim</a></li>
+                        <li><a href="#servicos">Nossos Serviços</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-hours">
+                    <h3>Horário de Funcionamento</h3>
+                    <ul>
+                        <li><span>Seg - Sex:</span> <span>09:00 - 17:00</span></li>
+                        <li><span>Sábados:</span> <span>09:00 - 15:00</span></li>
+                        <li><span>Domingos:</span> <span>Fechado</span></li>
+                        <li><span>Atendimento a residencia</span><span>Agendamento Previo </span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Nilza, 63 - Andar Superior <br> São Paulo - SP</li>
+                        <li><i class="fas fa-phone-alt"></i> (11) 93086-2733</li>
+                        <li><i class="fas fa-envelope"></i> StudioY@Gmail.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom reveal-up" style="transition-delay: 0.3s;">
+                <p>&copy; 2026 StudioB de Sobrancelhas. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
     <script>
-        // CONFIGURAÇÃO DO WHATSAPP DO ESTÚDIO (Altere o número abaixo mantendo o 55 e o DDD)
-        const WHATSAPP_NUMBER = "5511999999999"; 
-
-        // Ativação do Botão Flutuante
-        document.getElementById('btn-whatsapp-float').href = `https://wa.me/${WHATSAPP_NUMBER}?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20curadoria%20de%20sobrancelhas%20do%20Studio%20Olhar%20Supremo.`;
-
-        // Cursor Dourado Customizado
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.left = e.clientX + 'px';
-        });
-
-        document.querySelectorAll('a, button, .service-card, .testi-card, input, select, .faq-question').forEach(item => {
-            item.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            item.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
-
-        // Efeito Glassmorphism Dinâmico na Navegação
+        // 1. Efeito do Header no Scroll
+        const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
             } else {
-                navbar.classList.remove('scrolled');
+                header.classList.remove('scrolled');
             }
         });
 
-        // Toggle do Menu Mobile
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
+        // 2. Menu Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            
+            // Animar o ícone do menu (hamburguer para X)
+            const spans = menuToggle.querySelectorAll('span');
+            if (navLinks.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
         });
 
+        // Fechar menu mobile ao clicar num link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
         });
 
-        // Observador de Rolagem para Revelação Suave
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+        // 3. Acordeão FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Fechar outros abertos
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Alternar atual
+                item.classList.toggle('active');
+            });
+        });
+
+        // 4. Animação de Revelação no Scroll Aprimorada (Multi-direcional)
+        function reveal() {
+            // Seleciona todas as classes de animação
+            var reveals = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-scale");
+            
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Ponto em que a animação dispara
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                    
+                    // Dispara animação customizada do título H1 quando ele aparece
+                    if(reveals[i].querySelector('#h1-hero')) {
+                        setTimeout(() => {
+                            reveals[i].querySelector('#h1-hero').classList.add('active');
+                        }, 300);
+                    }
                 }
-            });
-        }, { threshold: 0.12 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Acordeão de Perguntas Frequentes (FAQ)
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                item.parentElement.classList.toggle('active');
-            });
-        });
-
-        // Sliders Antes e Depois de Precisão
-        document.querySelectorAll('.comparison-slider').forEach(slider => {
-            const range = slider.querySelector('.slider-range');
-            const beforeImg = slider.querySelector('.img-before');
-            const line = slider.querySelector('.slider-line');
-            const button = slider.querySelector('.slider-button');
-
-            range.addEventListener('input', (e) => {
-                const value = e.target.value;
-                beforeImg.style.clipPath = `polygon(0 0, ${value}% 0, ${value}% 100%, 0 100%)`;
-                line.style.left = `${value}%`;
-                button.style.left = `${value}%`;
-            });
-        });
-
-        // Gestão do Modal de Reservas
-        const modal = document.getElementById('modal');
-        document.querySelectorAll('.open-modal').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.style.display = 'flex';
-            });
-        });
-
-        document.getElementById('close-modal').addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
-
-        // Envio Formatado para o WhatsApp da Concierge
-        document.getElementById('form-booking').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('input-name').value;
-            const service = document.getElementById('input-service').value;
-            const period = document.getElementById('input-period').value;
-            
-            const text = `Olá, Concierge! Meu nome é *${name}* e tenho interesse nos serviços do *Studio Olhar Supremo*.%0A%0A✨ *Protocolo Desejado:* ${service}%0A🕒 *Período de Preferência:* ${period}%0A%0AAguardo o retorno para verificarmos as disponibilidades na agenda!`;
-            
-            window.open(`https://wa.me/${11930862733}?text=${text}`, '_blank');
-            modal.style.display = 'none';
-            e.target.reset();
-        });
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        
+        // Timeout pequeno para garantir que o DOM renderizou antes de checar a visibilidade inicial
+        setTimeout(reveal, 100); 
     </script>
 </body>
 </html>
