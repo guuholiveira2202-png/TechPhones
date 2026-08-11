@@ -3,44 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yasmin Browls. | Design de Sobrancelhas </title>
+    <title>Yasmin Browls | Design & Estética Facial</title>
     
-    <!-- Fontes do Google -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Ícones -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ================= VARIÁVEIS MODERNAS ================= */
         :root {
-            --primary: #c2957d;       
-            --primary-dark: #a87b64;  
-            --primary-light: #f5ece8;
-            --bg-color: #fcfbfa;      
-            --surface-color: #ffffff;
-            --text-dark: #232120;     
-            --text-light: #6b6664;    
-            --whatsapp: #25D366;
-            
-            --shadow-sm: 0 4px 15px rgba(0,0,0,0.03);
-            --shadow-md: 0 10px 30px rgba(0,0,0,0.05);
-            --shadow-lg: 0 20px 40px rgba(168, 123, 100, 0.08);
-            
-            --radius-md: 12px;
+            --primary: #7a482bf1;
+            --primary-dark: #7a482bf1;
+            --primary-light: #f9f3e5;
+            --secondary: #1a1a1a;
+            --bg-body: #faf7f5;
+            --bg-card: #ffffff;
+            --text-main: #2c2c2c;
+            --text-light: #666666;
+            --border-color: #eee3d5;
+            --radius-sm: 8px;
+            --radius-md: 16px;
             --radius-lg: 24px;
-            --radius-pill: 50px;
-            
-            --transition-fast: 0.2s ease;
-            --transition-smooth: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            
-            --header-height: 80px;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* ================= RESET E GLOBAL ================= */
         * {
             margin: 0;
             padding: 0;
@@ -49,261 +40,112 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        ::selection {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #e0d5ce;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        h1, h2, h3, h4 {
+        h1, h2, h3, .logo {
             font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            color: var(--text-dark);
-            line-height: 1.2;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* ================= ANIMAÇÕES GERAIS ================= */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        @keyframes fillUp {
-            from { transform: scaleY(0); }
-            to { transform: scaleY(1); }
-        }
-
-        /* Classes de Animação Via JS */
-        .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        
-        .reveal-up.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active {
-            opacity: 1;
-            transform: translate(0) scale(1);
-        }
-
-        /* ================= COMPONENTES BASE ================= */
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: clamp(4rem, 8vw, 8rem) 0;
+            padding: 0 20px;
         }
 
         /* Botões */
         .btn {
-            background-color: var(--primary);
-            color: var(--surface-color);
-            padding: 0.85rem 2rem;
-            border-radius: var(--radius-pill);
-            font-weight: 500;
-            font-size: 1rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            border: 2px solid var(--primary);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            transition: var(--transition-smooth);
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .btn:not(.btn-outline) {
+            background-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3);
+        }
+
+        .btn:not(.btn-outline):hover {
             background-color: var(--primary-dark);
-            z-index: -1;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
-        }
-
-        .btn:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-dark);
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 155, 39, 0.4);
         }
 
         .btn-outline {
-            background-color: transparent;
-            color: var(--primary);
-        }
-
-        .btn-outline::before {
-            background-color: var(--primary);
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
         }
 
         .btn-outline:hover {
-            color: var(--surface-color);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
         }
 
-        /* Títulos das Seções */
-        .section-header {
-            text-align: center;
-            margin-bottom: clamp(3rem, 5vw, 4rem);
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.2rem, 4vw, 3rem);
-            margin-bottom: 0.8rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 5px;
-            transition: width var(--transition-bounce);
-        }
-
-        .section-header:hover h2::after {
-            width: 120px;
-        }
-
-        .section-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ================= HEADER E NAVEGAÇÃO ================= */
-        header {
+        /* Cabecalho */
+        #header {
             position: fixed;
-            width: 100%;
             top: 0;
-            height: var(--header-height);
-            background-color: rgba(252, 251, 250, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.02);
-            transition: var(--transition-smooth);
+            transition: var(--transition);
+            padding: 20px 0;
         }
 
-        header.scrolled {
+        #header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
             box-shadow: var(--shadow-sm);
-            background-color: rgba(255, 255, 255, 0.98);
         }
 
         .navbar {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            height: 100%;
-            padding: 0 2rem;
+            justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            transition: transform var(--transition-bounce);
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
+            color: var(--secondary);
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
             align-items: center;
+            gap: 30px;
+            list-style: none;
         }
 
         .nav-links a {
-            font-size: 0.95rem;
+            text-decoration: none;
+            color: var(--text-main);
             font-weight: 500;
-            color: var(--text-dark);
-            transition: var(--transition-fast);
-            position: relative;
-        }
-
-        .nav-links a:not(.btn)::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary);
-            transition: width var(--transition-smooth);
-            border-radius: 2px;
-        }
-
-        .nav-links a:not(.btn):hover::after,
-        .nav-links a:not(.btn).active::after {
-            width: 100%;
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
@@ -313,524 +155,330 @@
         .menu-toggle {
             display: none;
             flex-direction: column;
-            cursor: pointer;
             gap: 5px;
-            z-index: 1001;
-            padding: 5px;
+            cursor: pointer;
         }
 
         .menu-toggle span {
-            width: 28px;
+            width: 25px;
             height: 2px;
-            background-color: var(--text-dark);
-            border-radius: 2px;
-            transition: var(--transition-smooth);
+            background-color: var(--secondary);
+            transition: var(--transition);
         }
 
-        /* ================= HERO SECTION ================= */
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+            padding: 160px 0 80px;
             position: relative;
-            padding-top: var(--header-height);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 45%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-light) 0%, #f0e2da 100%);
-            z-index: -1;
-            border-bottom-left-radius: 60px;
-            transform-origin: top right;
-            animation: fillUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
         }
 
         .hero-inner {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
         }
 
         .badges {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .badge {
-            background-color: var(--surface-color);
-            color: var(--primary-dark);
-            padding: 0.5rem 1.2rem;
-            border-radius: var(--radius-pill);
+            background: var(--primary-light);
+            padding: 8px 16px;
+            border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
+            color: var(--primary-dark);
             display: flex;
             align-items: center;
             gap: 6px;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition-bounce);
-            border: 1px solid rgba(194, 149, 125, 0.1);
-        }
-        
-        .badge:hover {
-            transform: translateY(-3px);
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--secondary);
         }
 
-        .hero h1 span {
+        .hero-content h1 span {
             color: var(--primary);
             font-style: italic;
-            position: relative;
-            display: inline-block;
         }
 
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 0%;
-            height: 30%;
-            background-color: rgba(194, 149, 125, 0.15);
-            z-index: -1;
-            transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.6s;
-        }
-
-        .hero h1.active span::after {
-            width: 100%;
-        }
-
-        .hero p {
+        .hero-content p {
+            font-size: 1.1rem;
             color: var(--text-light);
-            font-size: clamp(1.05rem, 2vw, 1.2rem);
-            margin-bottom: 2.5rem;
-            max-width: 90%;
+            margin-bottom: 30px;
         }
 
         .hero-actions {
             display: flex;
-            gap: 1rem;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .hero-image {
-            flex: 1;
             position: relative;
-            max-width: 500px;
+            text-align: center;
         }
 
         .hero-image img {
             width: 100%;
-            border-radius: 20px 20px 150px 20px;
-            box-shadow: var(--shadow-lg);
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            max-width: 450px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
             object-fit: cover;
-            aspect-ratio: 4/5;
-        }
-
-        .hero-image:hover img {
-            transform: scale(1.03);
         }
 
         .floating-card {
             position: absolute;
-            bottom: 40px;
-            left: -40px;
-            background: var(--surface-color);
-            padding: 1.2rem 1.5rem;
+            bottom: 30px;
+            left: 20px;
+            background: #ffffff;
+            padding: 15px 25px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-md);
             display: flex;
             align-items: center;
             gap: 15px;
-            animation: float 4s ease-in-out infinite;
-            z-index: 2;
-            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .floating-card i {
-            font-size: 2.2rem;
-            color: #FFD700;
+            font-size: 2rem;
+            color: var(--primary);
         }
 
-        .floating-card-text p {
-            font-weight: 700;
-            font-size: 1.2rem;
-            line-height: 1;
-            margin-bottom: 3px;
+        /* Secoes Gerais */
+        section {
+            padding: 90px 0;
         }
 
-        .floating-card-text span {
-            font-size: 0.85rem;
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
             color: var(--text-light);
-            font-weight: 500;
+            font-size: 1.05rem;
         }
 
-        /* ================= A PROFISSIONAL ================= */
+        /* Profissional */
         .professional {
-            background-color: var(--surface-color);
-            position: relative;
+            background-color: #ffffff;
         }
 
         .prof-inner {
             display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: clamp(3rem, 6vw, 6rem);
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-        }
-
-        .prof-image {
-            position: relative;
-        }
-
-        .prof-image-bg {
-            position: absolute;
-            top: 25px;
-            left: -25px;
-            width: 100%;
-            height: 100%;
-            background-color: var(--primary-light);
-            border-radius: var(--radius-lg);
-            z-index: 0;
-            transition: var(--transition-smooth);
         }
 
         .prof-image img {
             width: 100%;
+            max-width: 480px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            position: relative;
-            z-index: 1;
-            object-fit: cover;
-            aspect-ratio: 3/4;
-            transition: var(--transition-smooth);
-        }
-
-        .prof-image:hover img {
-            transform: translateY(-10px);
-        }
-        
-        .prof-image:hover .prof-image-bg {
-            transform: translate(15px, 15px);
-            background-color: rgba(194, 149, 125, 0.3);
-        }
-
-        .prof-name-tag {
-            position: absolute;
-            bottom: 40px;
-            right: -30px;
-            background: var(--surface-color);
-            padding: 1.2rem 2.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            z-index: 2;
-            text-align: center;
-            border-left: 5px solid var(--primary);
-        }
-
-        .prof-name-tag h4 {
-            font-size: 1.3rem;
-            margin-bottom: 2px;
-        }
-
-        .prof-name-tag span {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 500;
         }
 
         .prof-subtitle {
-            color: var(--primary);
-            font-weight: 600;
-            letter-spacing: 3px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            font-weight: 700;
             font-size: 0.85rem;
-            margin-bottom: 1.2rem;
             display: block;
+            margin-bottom: 10px;
         }
 
         .prof-content h2 {
-            font-size: clamp(2.2rem, 4vw, 3rem);
-            margin-bottom: 1.5rem;
-        }
-
-        .prof-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
         }
 
         .prof-signature {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-style: italic;
+            font-size: 1.8rem;
             color: var(--primary);
-            opacity: 0.8;
-            margin-top: 2rem;
+            margin: 20px 0;
+            font-style: italic;
         }
 
         .prof-stats {
             display: flex;
-            gap: 3rem;
-            margin-top: 3rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .prof-stat-item {
-            transition: transform var(--transition-bounce);
-        }
-
-        .prof-stat-item:hover {
-            transform: translateY(-5px);
+            gap: 40px;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
         }
 
         .prof-stat-item h4 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 0;
-            line-height: 1;
+            font-size: 2rem;
+            color: var(--secondary);
         }
 
         .prof-stat-item span {
             font-size: 0.85rem;
             color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            display: block;
-            margin-top: 8px;
         }
 
-        /* ================= SERVIÇOS ================= */
-        .services {
-            background-color: var(--bg-color);
-        }
-
+        /* Servicos */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
-            background: var(--surface-color);
-            padding: 3rem 2.5rem;
-            border-radius: var(--radius-lg);
-            transition: var(--transition-smooth);
-            border: 1px solid rgba(194, 149, 125, 0.1);
-            position: relative;
-            overflow: hidden;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 35px 30px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            justify-content: space-between;
         }
 
         .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
         }
 
         .service-icon {
-            width: 75px;
-            height: 75px;
+            width: 55px;
+            height: 55px;
             background: var(--primary-light);
-            color: var(--primary-dark);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.8rem;
-            transition: var(--transition-bounce);
-        }
-
-        .service-card:hover .service-icon {
-            background: var(--primary);
-            color: var(--surface-color);
-            transform: scale(1.1) rotate(10deg);
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
         }
 
         .service-card p {
             color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            flex-grow: 1;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
         }
 
         .price-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px dashed rgba(0,0,0,0.1);
-            margin-top: auto;
+            justify-content: space-between;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 15px;
         }
 
         .price {
+            font-size: 1.4rem;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-dark);
+            color: var(--secondary);
         }
 
-        /* ================= PORTFÓLIO APRIMORADO ================= */
-        .portfolio {
-            background-color: var(--surface-color);
-        }
-
-        /* Filtros */
+        /* Portfolio */
         .portfolio-filters {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
         }
 
         .filter-btn {
             background: transparent;
-            border: 1px solid #e0d5ce;
-            color: var(--text-light);
-            padding: 0.6rem 1.5rem;
-            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            border-radius: 50px;
             cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition-smooth);
+            font-weight: 600;
+            color: var(--text-light);
+            transition: var(--transition);
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
+        .filter-btn.active, .filter-btn:hover {
             background: var(--primary);
-            color: var(--surface-color);
+            color: #ffffff;
             border-color: var(--primary);
-            box-shadow: 0 4px 15px rgba(194, 149, 125, 0.3);
         }
 
-        /* Grid */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
 
         .portfolio-item {
             position: relative;
             border-radius: var(--radius-md);
             overflow: hidden;
-            aspect-ratio: 4/5;
-            box-shadow: var(--shadow-sm);
-            cursor: zoom-in; /* Ícone de lupa indicando que pode clicar */
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: transform var(--transition-fast), opacity 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .portfolio-item.hide {
-            display: none; /* Oculta itens filtrados */
+            aspect-ratio: 1;
+            cursor: pointer;
         }
 
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
+            transition: var(--transition);
         }
 
-        .portfolio-item:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.08);
-        }
-        
-        /* O overlay para mostrar a lupa ao passar o mouse (mantendo limpo) */
         .portfolio-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(194, 149, 125, 0.2);
+            inset: 0;
+            background: rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity var(--transition-smooth);
+            transition: var(--transition);
+            color: #ffffff;
+            font-size: 1.5rem;
         }
-        
+
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
-        
-        .portfolio-overlay i {
-            color: white;
-            font-size: 2rem;
-            transform: scale(0.5);
-            transition: transform var(--transition-bounce);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
         }
 
-        .portfolio-item:hover .portfolio-overlay i {
-            transform: scale(1);
+        .portfolio-item.hide {
+            display: none;
         }
 
-        /* Lightbox (Modal da Imagem) */
+        /* Lightbox */
         .lightbox {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(20, 18, 17, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 9999;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: var(--transition);
         }
 
         .lightbox.active {
@@ -841,402 +489,369 @@
         .lightbox-content {
             position: relative;
             max-width: 90%;
-            max-height: 90vh;
+            max-height: 85vh;
         }
 
-        .lightbox img {
+        .lightbox-content img {
             max-width: 100%;
-            max-height: 90vh;
-            border-radius: var(--radius-md);
-            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-            transform: scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            object-fit: contain;
-        }
-
-        .lightbox.active img {
-            transform: scale(1);
+            max-height: 85vh;
+            border-radius: var(--radius-sm);
         }
 
         .lightbox-close {
             position: absolute;
             top: -40px;
             right: 0;
-            color: white;
+            color: #ffffff;
             font-size: 2rem;
             cursor: pointer;
-            transition: var(--transition-bounce);
         }
 
-        .lightbox-close:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-
-        /* ================= DEPOIMENTOS ================= */
+        /* Depoimentos */
         .testimonials {
-            background-color: var(--primary-light);
-            background-image: radial-gradient(circle at 100% 100%, rgba(194, 149, 125, 0.1) 0%, transparent 50%);
+            background: #ffffff;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .testimonial-card {
-            background: var(--surface-color);
-            padding: 3rem 2.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition: transform var(--transition-bounce), box-shadow var(--transition-fast);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            background: var(--bg-body);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
         }
 
         .stars {
             color: #FFB800;
-            margin-bottom: 1.2rem;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
         }
 
         .testimonial-text {
             font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
         .client-info {
             display: flex;
             align-items: center;
-            gap: 15px;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 1.5rem;
+            gap: 12px;
         }
 
         .client-avatar {
-            width: 55px;
-            height: 55px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--surface-color);
+            background: var(--primary);
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
-            font-size: 1.3rem;
-            font-family: 'Playfair Display', serif;
-            box-shadow: 0 4px 10px rgba(194, 149, 125, 0.4);
+            font-weight: 700;
         }
 
-        .client-name h4 {
-            margin: 0;
-            font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .client-name span {
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        /* ================= FAQ ================= */
-        .faq {
-            background-color: var(--surface-color);
-        }
-
+        /* FAQ */
         .faq-container {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .faq-item {
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            padding: 1.5rem 0;
+            background: #ffffff;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
         }
 
         .faq-question {
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            padding: 0.5rem 0;
+            font-weight: 600;
         }
 
         .faq-question h3 {
-            font-size: 1.15rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            transition: var(--transition-fast);
-            padding-right: 20px;
-        }
-
-        .faq-question:hover h3 {
-            color: var(--primary);
+            font-size: 1.05rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         .faq-icon {
-            font-size: 1.2rem;
+            transition: var(--transition);
             color: var(--primary);
-            transition: transform var(--transition-bounce);
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-light);
-            border-radius: 50%;
-            flex-shrink: 0;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.5s ease;
-            opacity: 0;
-        }
-
-        .faq-answer p {
-            padding: 1rem 0 1.5rem 0;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
             color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(135deg);
-            background: var(--primary);
-            color: white;
+            font-size: 0.95rem;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px;
-            opacity: 1;
-            transition: max-height 1s ease-in-out, opacity 0.5s ease 0.2s;
+            max-height: 150px;
+            padding-bottom: 20px;
         }
 
-        /* ================= FOOTER ================= */
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Modal Agendamento */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+        }
+
+        .modal-header p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ffffff;
+            padding: 15px 25px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #10B981;
+            z-index: 3000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            border-left-color: #EF4444;
+        }
+
+        /* Rodapé */
         footer {
-            background-color: #1a1818;
-            color: #fcfbfa;
-            padding: 6rem 0 2rem 0;
+            background: var(--secondary);
+            color: #ffffff;
+            padding: 70px 0 30px;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-brand h2 {
-            color: #ffffff;
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 50px;
         }
 
         .footer-brand p {
-            color: #a09d9b;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin: 15px 0 20px;
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.05);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-bounce);
-            font-size: 1.1rem;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .footer-links h3, .footer-contact h3, .footer-hours h3 {
-            color: #ffffff;
-            margin-bottom: 1.8rem;
-            font-size: 1.3rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-links h3::after, .footer-contact h3::after, .footer-hours h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width var(--transition-fast);
-        }
-
-        .footer-links ul li {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links ul li a {
-            color: #a09d9b;
-            transition: var(--transition-fast);
-            display: inline-block;
-            font-size: 0.95rem;
-        }
-
-        .footer-links ul li a:hover {
             color: var(--primary);
-            transform: translateX(5px);
         }
 
-        .footer-contact li {
-            display: flex;
-            gap: 15px;
-            color: #a09d9b;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
-        }
-
-        .footer-contact i {
-            color: var(--primary);
-            margin-top: 5px;
+        .footer-links h3, .footer-hours h3, .footer-contact h3 {
             font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .footer-links ul, .footer-hours ul, .footer-contact ul {
+            list-style: none;
+        }
+
+        .footer-links li, .footer-hours li, .footer-contact li {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
         }
 
         .footer-hours li {
             display: flex;
             justify-content: space-between;
-            color: #a09d9b;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 0.8rem;
-            font-size: 0.95rem;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #777;
-            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            color: #888;
+            font-size: 0.85rem;
         }
 
-        /* ================= WHATSAPP FLUTUANTE ================= */
-        .whatsapp-float {
-            position: fixed;
-            width: 65px;
-            height: 65px;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp);
-            color: #FFF;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 35px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform var(--transition-bounce), background-color var(--transition-fast);
-            animation: pulse-glow 2s infinite;
+        /* Animations Scroll Reveal */
+        .reveal-up, .reveal-left, .reveal-right, .reveal-scale {
+            opacity: 0;
+            transition: all 0.8s ease;
         }
 
-        .whatsapp-float:hover {
-            background-color: #1ebd50;
-            transform: scale(1.1) translateY(-5px);
-            animation: none;
+        .reveal-up { transform: translateY(40px); }
+        .reveal-left { transform: translateX(-40px); }
+        .reveal-right { transform: translateX(40px); }
+        .reveal-scale { transform: scale(0.9); }
+
+        .reveal-up.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active {
+            opacity: 1;
+            transform: translate(0) scale(1);
         }
 
-        /* ================= RESPONSIVIDADE ================= */
-        @media (max-width: 991px) {
-            .hero::before { 
-                width: 100%; 
-                border-radius: 0; 
-                bottom: 0; 
-                height: 55%; 
-                top: auto; 
-                transform-origin: bottom; 
-            }
-            .hero-inner { 
-                flex-direction: column; 
-                text-align: center; 
-                padding-bottom: 3rem; 
-            }
-            .hero-content { margin: 0 auto; }
-            .badges { justify-content: center; }
-            .hero-actions { justify-content: center; }
-            .hero h1 span::after { left: 50%; transform: translateX(-50%); }
-            
-            .floating-card { 
-                left: 50%; 
-                transform: translateX(-50%); 
-                bottom: -20px; 
-                animation: none; 
-                width: max-content; 
-            }
-            
-            .prof-inner { grid-template-columns: 1fr; text-align: center; }
-            .prof-image { max-width: 500px; margin: 0 auto; }
-            .prof-name-tag { right: 50%; transform: translateX(50%); border-left: none; border-bottom: 5px solid var(--primary); }
-            .prof-stats { justify-content: center; }
-            
-            .lightbox-close { right: 0; top: -50px; font-size: 2.5rem; }
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero-inner, .prof-inner { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
+                top: 70px;
                 right: -100%;
-                top: var(--header-height);
-                flex-direction: column;
-                background-color: rgba(252, 251, 250, 0.98);
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
                 width: 100%;
-                height: calc(100vh - var(--header-height));
+                height: calc(100vh - 70px);
+                background: #ffffff;
+                flex-direction: column;
                 justify-content: center;
-                gap: 2rem;
-                transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-                box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+                transition: var(--transition);
             }
-
             .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.2rem; }
             .menu-toggle { display: flex; }
-
-            section { padding: 4rem 0; }
-            
-            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 30px; }
-            
-            .prof-stats { flex-direction: column; gap: 2rem; }
-            .footer-grid { gap: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
-    <!-- WHATSAPP FLUTUANTE -->
-    <a href="https://wa.me/5511945557423?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="whatsapp-float reveal-scale" style="transition-delay: 1s;" aria-label="Falar no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
     <!-- CABEÇALHO -->
     <header id="header">
@@ -1249,7 +864,7 @@
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#portfolio">Portfólio</a></li>
                 <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="https://wa.me/5511912001432?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="btn">Agendar <i class="fas fa-calendar-alt"></i></a></li>
+                <li><button class="btn btn-open-modal">Agendar Horário <i class="fas fa-calendar-alt"></i></button></li>
             </ul>
 
             <div class="menu-toggle" aria-label="Abrir menu">
@@ -1268,20 +883,20 @@
                     <div class="badge"><i class="fas fa-star" style="color: #FFB800;"></i> 5.0 Avaliações</div>
                     <div class="badge"><i class="fas fa-award" style="color: var(--primary);"></i> Especialista em Visagismo</div>
                 </div>
-                <h1 id="h1-hero">Realce o poder do seu <span>olhar</span></h1>
+                <h1>Realce o poder do seu <span>olhar</span></h1>
                 <p>Descubra a melhor versão do seu rosto. Especialista em naturalidade, visagismo e cuidados que elevam a sua autoestima.</p>
                 <div class="hero-actions">
-                    <a href="#servicos" class="btn">Ver Serviços</a>
-                    <a href="#sobre" class="btn btn-outline">Conhecer a Especialista</a>
+                    <button class="btn btn-open-modal">Agendar Agora <i class="fas fa-arrow-right"></i></button>
+                    <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
                 </div>
             </div>
             <div class="hero-image reveal-right" style="transition-delay: 0.2s;">
-                <img src="https://scontent-gru1-1.xx.fbcdn.net/v/t1.15752-9/755690029_4402071763442000_5622339171487721659_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=BeKC7HEPF0cQ7kNvwGjxHmc&_nc_oc=AdpZ9jjsoxaDnvJWdX6yLESv6GhPp4P8PgLLSHgKbxJ0saLAO0SKzxcmx1EkMP9o0fQ&_nc_zt=23&_nc_ht=scontent-gru1-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wGq1VOkxFdgEPbL_achGVrRtJu5q3dHQmceYphtus1W1w&oe=6A8A12E8" alt="Cliente com sobrancelhas feitas e design natural">
+                <img src="https://scontent-gru1-1.xx.fbcdn.net/v/t1.15752-9/755690029_4402071763442000_5622339171487721659_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=BeKC7HEPF0cQ7kNvwGjxHmc&_nc_oc=AdpZ9jjsoxaDnvJWdX6yLESv6GhPp4P8PgLLSHgKbxJ0saLAO0SKzxcmx1EkMP9o0fQ&_nc_zt=23&_nc_ht=scontent-gru1-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wGq1VOkxFdgEPbL_achGVrRtJu5q3dHQmceYphtus1W1w&oe=6A8A12E8" alt="Cliente com sobrancelhas perfeitamente alinhadas">
                 <div class="floating-card">
                     <i class="fas fa-smile-beam"></i>
-                    <div class="floating-card-text">
-                        <p>+100</p>
-                        <span>Clientes Satisfeitas</span>
+                    <div>
+                        <strong style="font-size: 1.1rem; display: block;">+100</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-light);">Clientes Satisfeitas</span>
                     </div>
                 </div>
             </div>
@@ -1292,30 +907,21 @@
     <section id="sobre" class="professional">
         <div class="container prof-inner">
             <div class="prof-image reveal-left">
-                <div class="prof-image-bg"></div>
-                <img src="https://scontent-gru1-1.xx.fbcdn.net/v/t1.15752-9/752658705_3969511200023251_6123589317510660312_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Y5msmFLB94kQ7kNvwHFfFUS&_nc_oc=Ado9ljgbwXD9gou_4qvppd0hPbT3rngyNg7G0jSZmSgjV3HZ7uwSg_kuupMjdGw8Cp8&_nc_zt=23&_nc_ht=scontent-gru1-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wFcAlEL3qQlpi6M2Mp-DoTtPeLn4Z7mIg5uJzX8zvCY0A&oe=6A8A0A6E" alt="Retrato de Bruna Albuquerque, Master Designer">
-                <div class="prof-name-tag">
-                    <h4>Yasmin Gabrielle</h4>
-                    <span>Profissional Designer</span>
-                </div>
+                <img src="https://scontent-gru1-1.xx.fbcdn.net/v/t1.15752-9/752658705_3969511200023251_6123589317510660312_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Y5msmFLB94kQ7kNvwHFfFUS&_nc_oc=Ado9ljgbwXD9gou_4qvppd0hPbT3rngyNg7G0jSZmSgjV3HZ7uwSg_kuupMjdGw8Cp8&_nc_zt=23&_nc_ht=scontent-gru1-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wFcAlEL3qQlpi6M2Mp-DoTtPeLn4Z7mIg5uJzX8zvCY0A&oe=6A8A0A6E" alt="Retrato da Especialista Yasmin Gabrielle">
             </div>
             <div class="prof-content reveal-right" style="transition-delay: 0.2s;">
                 <span class="prof-subtitle">Conheça a Especialista</span>
                 <h2>A arte de desenhar olhares apaixonantes</h2>
-                <p>Na Yasmin Browls, meu compromisso é oferecer um atendimento personalizado, respeitando o formato do rosto, o estilo e a essência de cada cliente. Cada design é realizado com precisão, cuidado e atenção aos detalhes, buscando um resultado elegante, natural e harmonioso. utilizando técnicas que proporcionam definição, simetria e um acabamento sofisticado, sempre priorizando a saúde dos fios e o conforto durante o atendimento, Para  <strong>realçar a beleza natural</strong> que já existe em você.</p>
-                
-                <div class="prof-signature">
-                     Yasmin Gabrielle
-                </div>
-
+                <p>Na Yasmin Browls, meu compromisso é oferecer um atendimento personalizado, respeitando o formato do rosto, o estilo e a essência de cada cliente. Cada design é realizado com precisão, cuidado e atenção aos detalhes, buscando um resultado elegante, natural e harmonioso.</p>
+                <div class="prof-signature">Yasmin Gabrielle</div>
                 <div class="prof-stats">
                     <div class="prof-stat-item">
                         <h4>2+</h4>
-                        <span>Anos de<br>Experiência</span>
+                        <span>Anos de Experiência</span>
                     </div>
                     <div class="prof-stat-item">
-                        <h4>1</h4>
-                        <span>Certificações<br></span>
+                        <h4>100%</h4>
+                        <span>Atendimento Dedicado</span>
                     </div>
                 </div>
             </div>
@@ -1327,113 +933,100 @@
         <div class="container">
             <div class="section-header reveal-up">
                 <h2>Nossos Serviços</h2>
-                <p>Escolha o tratamento ideal e agende seu horário com exclusividade.</p>
+                <p>Escolha o tratamento ideal e agende seu horário online com praticidade.</p>
             </div>
 
             <div class="services-grid">
                 <!-- Card 1 -->
                 <div class="service-card reveal-up" style="transition-delay: 0.1s;">
-                    <div class="service-icon">
-                        <i class="fas fa-magic"></i>
+                    <div>
+                        <div class="service-icon"><i class="fas fa-magic"></i></div>
+                        <h3>Design Simples</h3>
+                        <p>Mapeamento facial completo respeitando a simetria do seu rosto, pinça e linha para um acabamento limpo e perfeito.</p>
                     </div>
-                    <h3>Design Simples</h3>
-                    <p>Mapeamento facial completo respeitando a simetria do seu rosto, pinça e linha para um acabamento perfeito.</p>
                     <div class="price-row">
                         <span class="price">R$ 20,00</span>
-                        <a href="https://wa.me/551194555742?text=Olá!%20Gostaria%20de%20agendar%20o%20serviço%20de%20Design%20Simples." target="_blank" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Agendar</a>
+                        <button class="btn btn-outline btn-open-modal" data-servico="Design Simples - R$ 20,00">Agendar</button>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="service-card reveal-up" style="transition-delay: 0.2s;">
-                    <div class="service-icon">
-                        <i class="fas fa-leaf"></i>
+                    <div>
+                        <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>Design + Henna</h3>
+                        <p>Design alinhado com aplicação de henna orgânica para preencher falhas e entregar um efeito volumoso e harmonioso.</p>
                     </div>
-                    <h3>Design + Henna</h3>
-                    <p>O design perfeito alinhado com a aplicação de henna orgânica para preencher falhas e entregar um efeito de volume lindo.</p>
                     <div class="price-row">
                         <span class="price">R$ 25,00</span>
-                        <a href="https://wa.me/551194555742?text=Olá!%20Gostaria%20de%20agendar%20o%20serviço%20de%20Design%20com%20Henna." target="_blank" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Agendar</a>
+                        <button class="btn btn-outline btn-open-modal" data-servico="Design + Henna - R$ 25,00">Agendar</button>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="service-card reveal-up" style="transition-delay: 0.3s;">
-                    <div class="service-icon">
-                        <i class="fas fa-spa"></i>
+                    <div>
+                        <div class="service-icon"><i class="fas fa-spa"></i></div>
+                        <h3>Buço</h3>
+                        <p>Remoção delicada e eficaz dos pelos da região acima dos lábios, proporcionando pele lisa e leveza ao rosto.</p>
                     </div>
-                    <h3>Buço</h3>
-                    <p>Remoção delicada e eficaz dos pelos da região acima dos lábios, proporcionando uma pele lisinha, macia e um visual leve para o rosto.</p>
                     <div class="price-row">
                         <span class="price">R$ 10,00</span>
-                        <a href="https://wa.me/551194555742?text=Olá!%20Gostaria%20de%20agendar%20o%20serviço%20de%20Buço." target="_blank" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Agendar</a>
+                        <button class="btn btn-outline btn-open-modal" data-servico="Buço - R$ 10,00">Agendar</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO PORTFÓLIO APRIMORADO -->
+    <!-- SEÇÃO PORTFÓLIO -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <div class="section-header reveal-up">
                 <h2>Nosso Portfólio</h2>
-                <p>Resultados reais. Clique para ampliar e ver os detalhes de cada técnica.</p>
+                <p>Resultados reais. Clique para ver os detalhes do nosso trabalho.</p>
             </div>
 
-            <!-- Botões de Filtro -->
-            <div class="portfolio-filters reveal-up" style="transition-delay: 0.1s;">
+            <div class="portfolio-filters reveal-up">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="design">Design</button>
                 <button class="filter-btn" data-filter="henna">Com Henna</button>
-                <button class="filter-btn" data-filter="lamination">Buço</button>
             </div>
 
-            <!-- Galeria Interativa -->
             <div class="portfolio-grid">
-                <!-- Item 1: Lamination -->
-                <div class="portfolio-item reveal-scale" data-category="lamination" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.15752-9/753105079_28069648132672301_5997479110823119724_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=i-xa8eim1TwQ7kNvwEDszP4&_nc_oc=AdpR2SeA010bsBVKwX7rZUOltIQEkhD3-rWQjGSecPiTQQ8XsyRSzkStPMtuaNvAcCQ&_nc_zt=23&_nc_ht=scontent-gru2-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wH9RuvVhqQSW15uRBf6GNTfn7scnPjaDxIHROjR1LHRiA&oe=6A8A2AF6" alt="Resultado Brow Lamination">
+                <div class="portfolio-item reveal-scale" data-category="design" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.15752-9/753105079_28069648132672301_5997479110823119724_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=i-xa8eim1TwQ7kNvwEDszP4&_nc_oc=AdpR2SeA010bsBVKwX7rZUOltIQEkhD3-rWQjGSecPiTQQ8XsyRSzkStPMtuaNvAcCQ&_nc_zt=23&_nc_ht=scontent-gru2-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wH9RuvVhqQSW15uRBf6GNTfn7scnPjaDxIHROjR1LHRiA&oe=6A8A2AF6" alt="Resultado de Design">
                     <div class="portfolio-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <!-- Item 2: Design -->
                 <div class="portfolio-item reveal-scale" data-category="design" onclick="openLightbox(this.querySelector('img').src)">
                     <img src="https://scontent-gru1-2.xx.fbcdn.net/v/t1.15752-9/753275609_1509316113819911_6210654467549285071_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_ohc=xn6_sAp-jskQ7kNvwG94xt6&_nc_oc=AdrKOK_W_GtD1hsseg_A8p9tc1OmGF1Wskb-k5pIxXcC8WIeoiLRhFj0hPV0jhSzG2U&_nc_zt=23&_nc_ht=scontent-gru1-2.xx&_nc_ss=7b6a8&oh=03_Q7cD5wHPCsT5eNQLdwYlpWFbPY0MtJHT1FJd8utxtFGwdPSezQ&oe=6A89E9C2" alt="Resultado Design Limpo">
                     <div class="portfolio-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <!-- Item 3: Henna -->
                 <div class="portfolio-item reveal-scale" data-category="henna" onclick="openLightbox(this.querySelector('img').src)">
                     <img src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.15752-9/752596963_894946793662212_6609701325405638124_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=m6nAL2xTszwQ7kNvwGhW-Rv&_nc_oc=Adrobetdkfkn3PUQfiG-2ubqvEtMmjf1uwxEzKR3xPJXRrLp-lTzmqnyeRQYcU4gyic&_nc_zt=23&_nc_ht=scontent-gru2-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wFpvCCtGytTfQNAZxohOdCd3CQxbZK629FdWG62b3aJLw&oe=6A89E97F" alt="Resultado Henna">
                     <div class="portfolio-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                
-                <!-- Item 5: Design -->
                 <div class="portfolio-item reveal-scale" data-category="design" onclick="openLightbox(this.querySelector('img').src)">
                     <img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.15752-9/752652657_1805250510846470_7264603664286128174_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=9f807c&_nc_ohc=WQO977czxS4Q7kNvwEXDiFx&_nc_oc=Adr34n5inB0956ACmKWHrxi0DlvOJA5w0gRsnn2DrqXAUZEte_bmeyFR89NV4i1bQAY&_nc_zt=23&_nc_ht=scontent-gru2-2.xx&_nc_ss=7b6a8&oh=03_Q7cD5wFxnWbd9ttyGVYuY5kd-yGRK0h_N_o8PEtFMicsrZgIvA&oe=6A89E1A0" alt="Resultado Design">
                     <div class="portfolio-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <!-- Item 6: Henna -->
                 <div class="portfolio-item reveal-scale" data-category="henna" onclick="openLightbox(this.querySelector('img').src)">
                     <img src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.15752-9/754006751_1915213339149834_1289689610919245922_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=ywyojb3MR4EQ7kNvwFLepFf&_nc_oc=Adonag9vZ2RU17pRjy27ni3tEfj76ifeQpBMdqsoujHAlZVak52ySiRYqJrzXU73FEg&_nc_zt=23&_nc_ht=scontent-gru2-1.xx&_nc_ss=7b6a8&oh=03_Q7cD5wHwgSKLiePz83aDouoI-CguNfwYjkzx2UL4n3chHaWPvA&oe=6A89EFDD" alt="Resultado Henna 2">
                     <div class="portfolio-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
             </div>
-
-            <div class="reveal-up" style="text-align: center; margin-top: 4rem; transition-delay: 0.2s;">
-                <a href="https://www.instagram.com/yasmin_browls" class="btn btn-outline" target="_blank">Ver mais no Instagram <i class="fab fa-instagram" style="margin-left: 5px;"></i></a>
-            </div>
         </div>
     </section>
 
-    <!-- LIGHTBOX (MODAL DE IMAGEM) -->
+    <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <div class="lightbox-content" onclick="event.stopPropagation();"> <!-- Impede fechar ao clicar na imagem -->
+        <div class="lightbox-content" onclick="event.stopPropagation();">
             <i class="fas fa-times lightbox-close" onclick="closeLightbox()"></i>
             <img src="" alt="Imagem Ampliada" id="lightbox-img">
         </div>
     </div>
 
-    <!-- SEÇÃO DE DEPOIMENTOS -->
+    <!-- SEÇÃO DEPOIMENTOS -->
     <section id="depoimentos" class="testimonials">
         <div class="container">
             <div class="section-header reveal-up">
@@ -1442,48 +1035,38 @@
             </div>
 
             <div class="testimonials-grid">
-                <!-- Depoimento 1 -->
-                <div class="testimonial-card reveal-up" style="transition-delay: 0.1s;">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Melhor profissional que já fui! Ela respeitou o formato natural da minha sobrancelha e a henna durou muito tempo. Recomendo de olhos fechados!"</p>
+                <div class="testimonial-card reveal-up">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Melhor profissional que já fui! Ela respeitou o formato natural da minha sobrancelha e o atendimento é espetacular."</p>
                     <div class="client-info">
                         <div class="client-avatar">G</div>
-                        <div class="client-name">
-                            <h4>Geovanna Braga</h4>
-                            <span>Design + Henna</span>
+                        <div>
+                            <h4 style="font-size: 1rem;">Geovanna Braga</h4>
+                            <span style="font-size: 0.8rem; color: var(--primary-dark);">Design + Henna</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Depoimento 2 -->
-                <div class="testimonial-card reveal-up" style="transition-delay: 0.2s;">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Fiz Buço pela primeira vez e o resultado foi incrível. O ambiente é super aconchegante e o atendimento é nota 1000. Super indico!"</p>
+                <div class="testimonial-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Fiz buço e design. O ambiente é super aconchegante e o resultado ficou incrível. Super recomendo!"</p>
                     <div class="client-info">
                         <div class="client-avatar">P</div>
-                        <div class="client-name">
-                            <h4>Paula Rocha</h4>
-                            <span>Buço</span>
+                        <div>
+                            <h4 style="font-size: 1rem;">Paula Rocha</h4>
+                            <span style="font-size: 0.8rem; color: var(--primary-dark);">Design & Buço</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Depoimento 3 -->
-                <div class="testimonial-card reveal-up" style="transition-delay: 0.3s;">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Finalmente encontrei alguém que consertou minha sobrancelha. O design Simples mudou completamente a expressão do meu rosto para melhor."</p>
+                <div class="testimonial-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Finalmente encontrei quem entende o que combina com o meu rosto. Ficou harmônico e super elegante."</p>
                     <div class="client-info">
                         <div class="client-avatar">M</div>
-                        <div class="client-name">
-                            <h4>Marcia Santos
-                                </h4>
-                            <span>Design Simples</span>
+                        <div>
+                            <h4 style="font-size: 1rem;">Marcia Santos</h4>
+                            <span style="font-size: 0.8rem; color: var(--primary-dark);">Design Simples</span>
                         </div>
                     </div>
                 </div>
@@ -1496,17 +1079,17 @@
         <div class="container">
             <div class="section-header reveal-up">
                 <h2>Perguntas Frequentes</h2>
-                <p>Tire suas dúvidas rapidamente antes de agendar seu horário.</p>
+                <p>Tire suas dúvidas rapidamente.</p>
             </div>
 
-            <div class="faq-container reveal-up" style="transition-delay: 0.2s;">
+            <div class="faq-container reveal-up">
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Quanto tempo dura o efeito da Henna?</h3>
                         <i class="fas fa-plus faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>A duração da henna varia de acordo com o tipo de pele. Em peles oleosas, dura em média de 3 a 5 dias. Em peles secas a normais, pode durar de 7 a 10 dias. Os cuidados diários (evitar esfregar e produtos fortes) também influenciam muito!</p>
+                        <p>Dura em média de 3 a 5 dias em peles oleosas e de 7 a 10 dias em peles normais ou secas.</p>
                     </div>
                 </div>
 
@@ -1516,34 +1099,94 @@
                         <i class="fas fa-plus faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>O desconforto é o mínimo possível! Utilizamos técnicas precisas e ágeis com pinça e linha, e preparamos a sua pele antes do procedimento para minimizar qualquer incômodo na região.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>O que é o Brow Lamination?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>É uma técnica que consiste em alisar e alinhar os fios da sobrancelha na direção desejada, dando a ilusão de fios mais encorpados, definidos e volumosos. O procedimento é indolor e o efeito dura, em média, de 4 a 6 semanas.</p>
+                        <p>O desconforto é mínimo! Utilizamos técnicas com pinça e linha suave, priorizando sempre seu conforto.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MODAL DE AGENDAMENTO -->
+    <div class="modal-overlay" id="modalAgendamento">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Agendar Horário</h3>
+                <p>Preencha os dados abaixo para enviar seu agendamento diretamente para nosso sistema.</p>
+                <button class="modal-close" id="btnCloseModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgendamento">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" class="form-control" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp / Telefone *</label>
+                        <input type="tel" id="telefone" class="form-control" placeholder="(11) 99999-9999" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servico">Serviço Desejado *</label>
+                        <select id="servico" class="form-control" required>
+                            <option value="">Selecione um serviço...</option>
+                            <option value="Design Simples - R$ 20,00">Design Simples - R$ 20,00</option>
+                            <option value="Design + Henna - R$ 25,00">Design + Henna - R$ 25,00</option>
+                            <option value="Buço - R$ 10,00">Buço - R$ 10,00</option>
+                            <option value="Pacote Completo (Design + Henna + Buço)">Pacote Completo (Design + Henna + Buço)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="data">Data Desejada *</label>
+                            <input type="date" id="data" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="horario">Horário Desejado *</label>
+                            <select id="horario" class="form-control" required>
+                                <option value="">Horário...</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:30">16:30</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações (Opcional)</label>
+                        <textarea id="observacoes" class="form-control" rows="2" placeholder="Ex: Alguma preferência ou restrição"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-submit" id="btnSubmitForm">
+                            Confirmar Agendamento <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICAÇÃO TOAST -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMsg">Agendamento enviado com sucesso!</span>
+    </div>
+
     <!-- RODAPÉ -->
     <footer>
         <div class="container">
-            <div class="footer-grid reveal-up">
+            <div class="footer-grid">
                 <div class="footer-brand">
                     <h2 style="font-family: 'Playfair Display', serif;">Yasmin Browls.</h2>
                     <p>Realçando a sua beleza natural com técnicas exclusivas, responsabilidade e atendimento personalizado.</p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/yasmin_browls" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        
-                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/yasmin_browls" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -1554,7 +1197,6 @@
                         <li><a href="#sobre">A Profissional</a></li>
                         <li><a href="#servicos">Nossos Serviços</a></li>
                         <li><a href="#portfolio">Portfólio</a></li>
-                        <li><a href="#depoimentos">Depoimentos</a></li>
                     </ul>
                 </div>
 
@@ -1563,155 +1205,316 @@
                     <ul>
                         <li><span>Seg - Sex:</span> <span>09:00 - 16:30</span></li>
                         <li><span>Sábados:</span> <span>08:00 - 17:00</span></li>
-                        <li><span>Domingos:</span> <span>Fechado</span></li>
                     </ul>
                 </div>
 
                 <div class="footer-contact">
                     <h3>Contato</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> <span>Rua nilza, 63 - Andar Superior<br> São Paulo - SP</span></li>
-                        <li><i class="fas fa-phone-alt"></i> <span>(11) 94555742</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Rua Nilza, 63 - Andar Superior<br> São Paulo - SP</span></li>
                         <li><i class="fas fa-envelope"></i> <span>yasmingabi2408@gmail.com</span></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="footer-bottom reveal-up" style="transition-delay: 0.3s;">
-                <p>&copy; 2026 Yasmin Browls. de Sobrancelhas. Todos os direitos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Yasmin Browls. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
+<script type="module">
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { 
+    getFirestore, 
+    collection, 
+    addDoc, 
+    serverTimestamp, 
+    query, 
+    where, 
+    getDocs 
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // 1. Controle do Header no Scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 30) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+// Configuração Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyAW8l4b3Qyv8LdOnZXXwCQodknrRAAjHxE",
+    authDomain: "gestao-de-estoque-f3df6.firebaseapp.com",
+    projectId: "gestao-de-estoque-f3df6",
+    storageBucket: "gestao-de-estoque-f3df6.firebasestorage.app",
+    messagingSenderId: "593995380485",
+    appId: "1:593995380485:web:52e132c87305fca3af696c",
+    measurementId: "G-YL2PY59W0S"
+};
 
-        // 2. Menu Mobile Avançado
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const links = document.querySelectorAll('.nav-links a');
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+// Elementos do Modal e Form
+const modal = document.getElementById('modalAgendamento');
+const btnCloseModal = document.getElementById('btnCloseModal');
+const openModalBtns = document.querySelectorAll('.btn-open-modal');
+const servicoSelect = document.getElementById('servico');
+const formAgendamento = document.getElementById('formAgendamento');
+const btnSubmitForm = document.getElementById('btnSubmitForm');
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+
+// Elementos do Seletor Dinâmico de Horário
+const inputData = document.getElementById('data');
+const slotsGrid = document.getElementById('slotsGrid');
+const inputHorario = document.getElementById('horario');
+
+// Configuração de Atendimento
+const HORA_INICIO = 8;    // 08:00
+const HORA_FIM = 18;      // 18:00
+const INTERVALO_MIN = 60; // Duração de cada slot (minutos)
+
+// Função para gerar horários do dia
+function gerarHorariosBase(inicio, fim, intervalo) {
+    const horarios = [];
+    let atual = new Date();
+    atual.setHours(inicio, 0, 0, 0);
+
+    const limite = new Date();
+    limite.setHours(fim, 0, 0, 0);
+
+    while (atual < limite) {
+        const horas = String(atual.getHours()).padStart(2, '0');
+        const minutos = String(atual.getMinutes()).padStart(2, '0');
+        horarios.push(`${horas}:${minutos}`);
+        atual.setMinutes(atual.getMinutes() + intervalo);
+    }
+    return horarios;
+}
+
+// Atualizar e consultar disponibilidade de horários ao escolher uma data
+if (inputData) {
+    inputData.addEventListener('change', async (e) => {
+        const dataSelecionada = e.target.value;
+        if (!dataSelecionada) return;
+
+        slotsGrid.innerHTML = `<p class="slot-placeholder"><i class="fas fa-spinner fa-spin"></i> Verificando disponibilidade...</p>`;
+        if (inputHorario) inputHorario.value = '';
+
+        try {
+            // Busca agendamentos salvos no Firestore para a data
+            const q = query(
+                collection(db, "agendamentos"), 
+                where("data", "==", dataSelecionada)
+            );
+            const querySnapshot = await getDocs(q);
             
-            const spans = menuToggle.querySelectorAll('span');
-            if (navLinks.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const spans = menuToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            });
-        });
-
-        // 3. Sistema de Filtros do Portfólio
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove classe active de todos e adiciona no clicado
-                document.querySelector('.filter-btn.active').classList.remove('active');
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.classList.remove('hide');
-                    } else {
-                        item.classList.add('hide');
-                    }
-                });
-            });
-        });
-
-        // 4. Lightbox (Galeria Ampliada)
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-
-        function openLightbox(imgSrc) {
-            lightboxImg.src = imgSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Evita rolar a página por trás
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Devolve o scroll
-        }
-
-        // Fechar com a tecla ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
-            }
-        });
-
-        // 5. Acordeão de FAQ Suave
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
-                });
-                
-                if (!isActive) {
-                    item.classList.add('active');
+            const ocupados = [];
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                if (data.status !== 'Cancelado' && data.horario) {
+                    ocupados.push(data.horario);
                 }
             });
-        });
 
-        // 6. Animações de Revelação Refinadas (Scroll Reveal)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-scale");
-            
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 80;
+            // Renderiza os botões na tela
+            const horariosDisponiveis = gerarHorariosBase(HORA_INICIO, HORA_FIM, INTERVALO_MIN);
+            slotsGrid.innerHTML = '';
 
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                    
-                    if(reveals[i].querySelector('#h1-hero')) {
-                        setTimeout(() => {
-                            const heroText = reveals[i].querySelector('#h1-hero');
-                            if(heroText) heroText.classList.add('active');
-                        }, 200);
-                    }
+            horariosDisponiveis.forEach(hora => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.classList.add('time-slot');
+                btn.textContent = hora;
+
+                if (ocupados.includes(hora)) {
+                    btn.classList.add('disabled');
+                    btn.disabled = true;
+                    btn.title = "Horário indisponível";
+                } else {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
+                        btn.classList.add('selected');
+                        if (inputHorario) inputHorario.value = hora;
+                    });
                 }
-            }
+
+                slotsGrid.appendChild(btn);
+            });
+
+        } catch (error) {
+            console.error("Erro ao buscar horários: ", error);
+            slotsGrid.innerHTML = `<p class="slot-placeholder" style="color: red;">Erro ao carregar horários. Tente novamente.</p>`;
         }
-        
-        window.addEventListener("scroll", reveal);
-        document.addEventListener('DOMContentLoaded', reveal);
-    </script>
+    });
+}
+
+// Modal - Abrir
+openModalBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const servico = e.currentTarget.getAttribute('data-servico');
+        if (servico && servicoSelect) {
+            servicoSelect.value = servico;
+        }
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Modal - Fechar
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    if (slotsGrid) {
+        slotsGrid.innerHTML = `<p class="slot-placeholder">Selecione uma data para ver os horários disponíveis.</p>`;
+    }
+}
+
+if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+}
+
+// Toast Notification
+function showToast(message, type = 'success') {
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = message;
+    toast.className = `toast show ${type}`;
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 4000);
+}
+
+// Submissão do Formulário
+if (formAgendamento) {
+    formAgendamento.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!inputHorario || !inputHorario.value) {
+            showToast("Por favor, selecione um horário disponível.", "error");
+            return;
+        }
+
+        btnSubmitForm.disabled = true;
+        btnSubmitForm.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Salvando...`;
+
+        const agendamentoData = {
+            nome: document.getElementById('nome').value.trim(),
+            telefone: document.getElementById('telefone').value.trim(),
+            servico: document.getElementById('servico').value,
+            data: document.getElementById('data').value,
+            horario: inputHorario.value,
+            observacoes: document.getElementById('observacoes').value.trim(),
+            status: 'Pendente',
+            criadoEm: serverTimestamp()
+        };
+
+        try {
+            await addDoc(collection(db, "agendamentos"), agendamentoData);
+            showToast("Agendamento realizado com sucesso! Aguarde nosso contato.", "success");
+            formAgendamento.reset();
+            closeModal();
+        } catch (error) {
+            console.error("Erro ao salvar no Firestore: ", error);
+            showToast("Erro ao processar agendamento. Tente novamente.", "error");
+        } finally {
+            btnSubmitForm.disabled = false;
+            btnSubmitForm.innerHTML = `Confirmar Agendamento <i class="fas fa-check-circle"></i>`;
+        }
+    });
+}
+
+/* ==========================================================================
+   SCRIPTS DE INTERFACE
+   ========================================================================== */
+
+// Header Scrolled
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (header) {
+        if (window.scrollY > 30) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+});
+
+// Menu Mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
+
+// Filtro de Portfólio
+const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (activeBtn) activeBtn.classList.remove('active');
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                item.classList.remove('hide');
+            } else {
+                item.classList.add('hide');
+            }
+        });
+    });
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(imgSrc) {
+    if (lightbox && lightboxImg) {
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
+    }
+});
+
+// Scroll Reveal
+function reveal() {
+    const reveals = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-scale");
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 80) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", reveal);
+document.addEventListener('DOMContentLoaded', reveal);
+</script>
 </body>
 </html>

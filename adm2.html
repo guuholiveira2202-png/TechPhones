@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin | Yasmin Brows</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #d39854;
+            --primary-dark: #d39854;
+            --primary-light: #fef9c3;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 14px;
+            --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 24px 16px;
+        }
+
+        .admin-container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        /* Topo / Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            padding: 20px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-title h1 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .header-title span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Indicadores / Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .stat-icon.total { background: #e0f2fe; color: #0284c7; }
+        .stat-icon.pendente { background: #fef3c7; color: #d97706; }
+        .stat-icon.confirmado { background: #dcfce7; color: #16a34a; }
+        .stat-icon.cancelado { background: #fee2e2; color: #dc2626; }
+
+        .stat-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .stat-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Conteúdo Principal & Filtros */
+        .content-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .form-control {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            outline: none;
+            background: #fff;
+            color: var(--text);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        /* Tabela */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-Pendente { background: #fef3c7; color: #b45309; }
+        .status-Confirmado { background: #dcfce7; color: #15803d; }
+        .status-Cancelado { background: #fee2e2; color: #b91c1c; }
+
+        /* Botões de Ação */
+        .action-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-confirm { background: #dcfce7; color: #15803d; }
+        .btn-confirm:hover { background: #bbf7d0; }
+
+        .btn-cancel { background: #fee2e2; color: #b91c1c; }
+        .btn-cancel:hover { background: #fecaca; }
+
+        .btn-delete { background: #f1f5f9; color: #64748b; }
+        .btn-delete:hover { background: #e2e8f0; color: #0f172a; }
+
+        .whatsapp-link {
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0fdf4;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .whatsapp-link:hover {
+            background: #dcfce7;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state i {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            padding: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Toast Message */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0f172a;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <!-- Topo -->
+        <div class="header">
+            <div class="header-title">
+                <h1><i class="fas fa-calendar-alt"></i> Painel de Agendamentos</h1>
+                <span>Yasmin Brows • Gestão Simplificada</span>
+            </div>
+            <button class="btn-primary" onclick="openModal()">
+                <i class="fas fa-plus"></i> Novo Agendamento
+            </button>
+        </div>
+
+        <!-- Cards Estatísticos -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon total"><i class="fas fa-layer-group"></i></div>
+                <div class="stat-info">
+                    <h3 id="totalCount">0</h3>
+                    <p>Total Geral</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon pendente"><i class="fas fa-clock"></i></div>
+                <div class="stat-info">
+                    <h3 id="pendenteCount">0</h3>
+                    <p>Pendentes</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon confirmado"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-info">
+                    <h3 id="confirmadoCount">0</h3>
+                    <p>Confirmados</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon cancelado"><i class="fas fa-times-circle"></i></div>
+                <div class="stat-info">
+                    <h3 id="canceladoCount">0</h3>
+                    <p>Cancelados</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela e Ferramentas -->
+        <div class="content-card">
+            <div class="toolbar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar por cliente, telefone ou serviço...">
+                </div>
+                <div class="filter-group">
+                    <select id="statusFilter" class="form-control">
+                        <option value="todos">Todos os Status</option>
+                        <option value="Pendente">Pendentes</option>
+                        <option value="Confirmado">Confirmados</option>
+                        <option value="Cancelado">Cancelados</option>
+                    </select>
+                    <input type="date" id="dateFilter" class="form-control" title="Filtrar por data">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Contato</th>
+                            <th>Serviço</th>
+                            <th>Data & Hora</th>
+                            <th>Status</th>
+                            <th style="text-align: right;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agendamentosTable">
+                        <tr>
+                            <td colspan="6" class="empty-state">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Carregando agendamentos...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Novo Agendamento -->
+    <div class="modal-backdrop" id="bookingModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Novo Agendamento</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="addBookingForm">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Nome do Cliente *</label>
+                        <input type="text" id="newNome" class="form-control" required placeholder="Ex: Maria Silva">
+                    </div>
+                    <div class="form-group full">
+                        <label>Telefone / WhatsApp *</label>
+                        <input type="tel" id="newTelefone" class="form-control" required placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group full">
+                        <label>Serviço *</label>
+                        <input type="text" id="newServico" class="form-control" required placeholder="Ex: Design de Sobrancelhas">
+                    </div>
+                    <div class="form-group">
+                        <label>Data *</label>
+                        <input type="date" id="newData" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Horário *</label>
+                        <input type="time" id="newHorario" class="form-control" required>
+                    </div>
+                    <div class="form-group full">
+                        <label>Observações</label>
+                        <input type="text" id="newObservacoes" class="form-control" placeholder="Opcional">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar Agendamento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage">Mensagem</span>
+    </div>
+
+    <!-- Script Firestore (v10.8.0) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            onSnapshot, 
+            doc, 
+            updateDoc, 
+            deleteDoc, 
+            addDoc,
+            query, 
+            orderBy, 
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAW8l4b3Qyv8LdOnZXXwCQodknrRAAjHxE",
+            authDomain: "gestao-de-estoque-f3df6.firebaseapp.com",
+            projectId: "gestao-de-estoque-f3df6",
+            storageBucket: "gestao-de-estoque-f3df6.firebasestorage.app",
+            messagingSenderId: "593995380485",
+            appId: "1:593995380485:web:52e132c87305fca3af696c",
+            measurementId: "G-YL2PY59W0S"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Elementos DOM
+        const tableBody = document.getElementById('agendamentosTable');
+        const totalCount = document.getElementById('totalCount');
+        const pendenteCount = document.getElementById('pendenteCount');
+        const confirmadoCount = document.getElementById('confirmadoCount');
+        const canceladoCount = document.getElementById('canceladoCount');
+        const searchInput = document.getElementById('searchInput');
+        const statusFilter = document.getElementById('statusFilter');
+        const dateFilter = document.getElementById('dateFilter');
+        const bookingModal = document.getElementById('bookingModal');
+        const addBookingForm = document.getElementById('addBookingForm');
+
+        let rawAgendamentos = [];
+
+        // Notificação Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Listener Real-time
+        const q = query(collection(db, "agendamentos"), orderBy("criadoEm", "desc"));
+        
+        onSnapshot(q, (snapshot) => {
+            rawAgendamentos = [];
+            let pendentes = 0, confirmados = 0, cancelados = 0;
+
+            snapshot.forEach((docSnap) => {
+                const item = docSnap.data();
+                const id = docSnap.id;
+                
+                rawAgendamentos.push({ id, ...item });
+
+                if (item.status === 'Pendente') pendentes++;
+                if (item.status === 'Confirmado') confirmados++;
+                if (item.status === 'Cancelado') cancelados++;
+            });
+
+            totalCount.textContent = rawAgendamentos.length;
+            pendenteCount.textContent = pendentes;
+            confirmadoCount.textContent = confirmados;
+            canceladoCount.textContent = cancelados;
+
+            renderTable();
+        }, (error) => {
+            showToast("Erro ao carregar dados: " + error.message);
+        });
+
+        // Filtragem e Renderização
+        function renderTable() {
+            const searchVal = searchInput.value.toLowerCase().trim();
+            const statusVal = statusFilter.value;
+            const dateVal = dateFilter.value;
+
+            const filtered = rawAgendamentos.filter(item => {
+                const matchesSearch = 
+                    (item.nome || '').toLowerCase().includes(searchVal) ||
+                    (item.telefone || '').includes(searchVal) ||
+                    (item.servico || '').toLowerCase().includes(searchVal);
+
+                const matchesStatus = statusVal === 'todos' || item.status === statusVal;
+                const matchesDate = !dateVal || item.data === dateVal;
+
+                return matchesSearch && matchesStatus && matchesDate;
+            });
+
+            if (filtered.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <i class="fas fa-folder-open"></i>
+                            <p>Nenhum agendamento encontrado com os filtros atuais.</p>
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach((item) => {
+                const telLimpo = item.telefone ? item.telefone.replace(/\D/g, '') : '';
+                const dataFormatada = item.data ? item.data.split('-').reverse().join('/') : '-';
+                const status = item.status || 'Pendente';
+                const mensagemWhatsapp = encodeURIComponent(`Olá ${item.nome || ''}, confirmamos seu agendamento no dia ${dataFormatada} às ${item.horario || ''}.`);
+
+                html += `
+                    <tr>
+                        <td>
+                            <strong>${item.nome || 'Cliente sem nome'}</strong>
+                            ${item.observacoes ? `<br><small style="color:var(--text-muted);"><i class="fas fa-sticky-note"></i> ${item.observacoes}</small>` : ''}
+                        </td>
+                        <td>
+                            ${item.telefone ? `
+                                <a href="https://wa.me/55${telLimpo}?text=${mensagemWhatsapp}" target="_blank" class="whatsapp-link" title="Abrir conversa no WhatsApp">
+                                    <i class="fab fa-whatsapp"></i> ${item.telefone}
+                                </a>
+                            ` : '-'}
+                        </td>
+                        <td>${item.servico || '-'}</td>
+                        <td><strong>${dataFormatada}</strong> às ${item.horario || '-'}</td>
+                        <td><span class="status-badge status-${status}">${status}</span></td>
+                        <td>
+                            <div class="action-group" style="justify-content: flex-end;">
+                                <button class="action-btn btn-confirm" onclick="updateStatus('${item.id}', 'Confirmado')" title="Confirmar Agendamento">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="action-btn btn-cancel" onclick="updateStatus('${item.id}', 'Cancelado')" title="Cancelar Agendamento">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="action-btn btn-delete" onclick="removerAgendamento('${item.id}')" title="Excluir Registro">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableBody.innerHTML = html;
+        }
+
+        // Eventos de Filtro
+        searchInput.addEventListener('input', renderTable);
+        statusFilter.addEventListener('change', renderTable);
+        dateFilter.addEventListener('change', renderTable);
+
+        // Operações no Firestore
+        window.updateStatus = async (id, novoStatus) => {
+            try {
+                const docRef = doc(db, "agendamentos", id);
+                await updateDoc(docRef, { status: novoStatus });
+                showToast(`Status atualizado para ${novoStatus}`);
+            } catch (e) {
+                showToast("Erro ao atualizar status: " + e.message);
+            }
+        };
+
+        window.removerAgendamento = async (id) => {
+            if (confirm("Deseja realmente remover este agendamento permanentemente?")) {
+                try {
+                    await deleteDoc(doc(db, "agendamentos", id));
+                    showToast("Agendamento excluído com sucesso.");
+                } catch (e) {
+                    showToast("Erro ao remover: " + e.message);
+                }
+            }
+        };
+
+        // Modal Handlers
+        window.openModal = () => bookingModal.classList.add('active');
+        window.closeModal = () => {
+            bookingModal.classList.remove('active');
+            addBookingForm.reset();
+        };
+
+        addBookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const novoAgendamento = {
+                nome: document.getElementById('newNome').value,
+                telefone: document.getElementById('newTelefone').value,
+                servico: document.getElementById('newServico').value,
+                data: document.getElementById('newData').value,
+                horario: document.getElementById('newHorario').value,
+                observacoes: document.getElementById('newObservacoes').value,
+                status: 'Pendente',
+                criadoEm: serverTimestamp()
+            };
+
+            try {
+                await addDoc(collection(db, "agendamentos"), novoAgendamento);
+                showToast("Agendamento cadastrado com sucesso!");
+                closeModal();
+            } catch (error) {
+                showToast("Erro ao salvar: " + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
